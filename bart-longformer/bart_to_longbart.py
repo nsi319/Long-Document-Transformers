@@ -33,8 +33,8 @@ def create_long_model(
     tokenizer.model_max_length = max_length
     tokenizer.init_kwargs['model_max_length'] = max_length
     current_max_length, embed_size = model.model.encoder.embed_positions.weight.shape
-    # config.max_lengthition_embeddings = max_length
-    config.encoder_max_lengthition_embeddings = max_length
+    # config.max_position_embeddings = max_pos
+    config.encoder_max_position_embeddings = max_length
     max_length += 2  # NOTE: BART has positions 0,1 reserved, so embedding size is max position + 2
     assert max_length > current_max_length
     # allocate a larger position embedding matrix
@@ -45,9 +45,8 @@ def create_long_model(
     while k < max_length - 1:
         new_pos_embed[k:(k + step)] = model.model.encoder.embed_positions.weight[2:]
         k += step
-    
     model.model.encoder.embed_positions.weight.data = new_pos_embed
-    
+
     # replace the `modeling_bart.SelfAttention` object with `LongformerSelfAttention`
     config.attention_window = [attention_window] * config.num_hidden_layers
     for i, layer in enumerate(model.model.encoder.layers):
@@ -69,6 +68,7 @@ def create_long_model(
     model.save_pretrained(save_model_path)
     tokenizer.save_pretrained(save_model_path)
     return model, tokenizer
+
 
 
 @dataclass
