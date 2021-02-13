@@ -1,0 +1,5 @@
+
+Reusing the high-level encoder-decoder architecture of BART via BartForConditionalGeneration
+Replacing BART's encoder attention layers with the LongformerSelfAttentionForBart
+Increasing the attention_window to 1024
+Increasing max_pos (positional embeddings) to 4096
