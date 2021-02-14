@@ -1,3 +1,5 @@
+### Transformer version: 2.10.0
+
 import argparse
 import logging
 import os

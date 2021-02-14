@@ -1,3 +1,5 @@
+### Transformer version: 2.10.0
+
 from typing import Dict, List, Optional, Tuple
 
 from torch import Tensor, nn

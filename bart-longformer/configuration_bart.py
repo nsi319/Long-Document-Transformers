@@ -14,6 +14,8 @@
 # limitations under the License.
 """ BART configuration """
 
+### Transformer version: 2.10.0
+
 
 import logging
 

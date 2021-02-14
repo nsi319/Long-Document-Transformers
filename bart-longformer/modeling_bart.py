@@ -14,6 +14,8 @@
 # limitations under the License.
 """PyTorch BART model, ported from the fairseq repo."""
 
+### Transformer version: 2.10.0
+
 import logging
 import math
 import random
