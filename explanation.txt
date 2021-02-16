@@ -1,6 +1,18 @@
-Converting bart to longbart:
+Converting BART to longBART:
 
 Reusing the high-level encoder-decoder architecture of BART using BartForConditionalGeneration
 Replacing BART encoder's attention layers with the LongformerSelfAttentionForBart (from transformers.modeling_longformer)
 Increasing max_pos (positional embeddings) to 4096 (any number > 1024)
 Increasing the attention_window to 1024
+
+
+LED:
+Transformers (4.3.0) has LED (Longformer Encoder Decoder) model which is based on BART's architecture.
+LEDForConditionalGeneration is an extension of BartForConditionalGeneration exchanging the traditional self-attention layer with Longformer’s chunked self-attention layer. 
+LEDTokenizer is an alias of BartTokenizer. 
+
+Hence LEDs are the same as longBART.
+
+LED models: 
+    allenai/led-base-16384
+    allenai/led-large-16384
