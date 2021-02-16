@@ -18,5 +18,5 @@ Pre-trained LED models:
     allenai/led-base-16384
     allenai/led-large-16384
 
-We can finetune these LED models using the same seq2seq finetuning script. Set --model_name_or_path to allenai/led-base-16384 or allenai/led-large-16384 to summarize documents of max length 16,384.
+We can finetune these LED models using the same sequence-to-sequence finetuning script. Set --model_name_or_path to allenai/led-base-16384 or allenai/led-large-16384 to summarize documents of max length 16,384.
 For seq2seq finetuning script, visit https://github.com/nsi319/Finetune-Transformers.
