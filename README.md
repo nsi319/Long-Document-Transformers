@@ -12,4 +12,8 @@ python bart-longformer/bart_to_longbart.py \
     --attention_window 1024 \
     --max_length 4096 
 ```
+To see all the possible command line options, run:
 
+```bash
+python bart-longformer/bart_to_longbart.py --help
+```
