@@ -6,13 +6,17 @@ Increasing max_pos (positional embeddings) to 4096 (any number > 1024)
 Increasing the attention_window to 1024
 
 
-LED:
-Transformers (4.3.0) has LED (Longformer Encoder Decoder) model which is based on BART's architecture.
+Longformer Encoder Decoder (LED):
+Transformers (4.3.0) has LED models which is based on BART's architecture and supports long document generative sequence-to-sequence tasks.
+
 LEDForConditionalGeneration is an extension of BartForConditionalGeneration exchanging the traditional self-attention layer with Longformer’s chunked self-attention layer. 
 LEDTokenizer is an alias of BartTokenizer. 
 
 Hence LEDs are the same as longBART. 
 
-LED models: 
+Pre-trained LED models: 
     allenai/led-base-16384
     allenai/led-large-16384
+
+We can finetune these LED models using the same seq2seq finetuning script. Set --model_name_or_path to allenai/led-base-16384 or allenai/led-large-16384 to summarize documents of max length 16,384.
+For seq2seq finetuning script, visit https://github.com/nsi319/Finetune-Transformers.
