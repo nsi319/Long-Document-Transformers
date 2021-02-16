@@ -1,0 +1,225 @@
+2021-02-16 16:08:54.193325: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+02/16/2021 16:08:55 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+02/16/2021 16:08:55 - INFO - __main__ -   Training/evaluation parameters Seq2SeqTrainingArguments(output_dir='/content/drive/MyDrive/longformers/models/legal-led-base-16384_79_14_split', overwrite_output_dir=True, do_train=True, do_eval=True, do_predict=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=1, per_device_eval_batch_size=1, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, lr_scheduler_type=<SchedulerType.LINEAR: 'linear'>, warmup_steps=0, logging_dir='runs/Feb16_16-08-55_52a0b847f5ba', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', fp16_backend='auto', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='/content/drive/MyDrive/longformers/models/legal-led-base-16384_79_14_split', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None, ignore_data_skip=False, sharded_ddp=False, deepspeed=None, label_smoothing_factor=0.0, adafactor=False, group_by_length=False, report_to=['tensorboard'], sortish_sampler=False, predict_with_generate=True)
+02/16/2021 16:08:56 - WARNING - datasets.builder -   Using custom data configuration default-6d39b139f526611d
+02/16/2021 16:08:56 - WARNING - datasets.builder -   Reusing dataset csv (/root/.cache/huggingface/datasets/csv/default-6d39b139f526611d/0.0.0/965b6429be0fc05f975b608ce64e1fa941cc8fb4f30629b523d2390f3c0e1a93)
+loading configuration file https://huggingface.co/allenai/led-base-16384/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/ec844bead6f5bbcd6ac727b57e595c2ba40b0970f91cb923423773f72fe1702f.898baac75d55d484b1b1de95b8ab791987c78591acf36ce6131b56d0d2d26af7
+Model config LEDConfig {
+  "_name_or_path": "./",
+  "activation_dropout": 0.0,
+  "activation_function": "gelu",
+  "architectures": [
+    "LEDForConditionalGeneration"
+  ],
+  "attention_dropout": 0.0,
+  "attention_window": [
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024
+  ],
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "classifier_dropout": 0.0,
+  "d_model": 768,
+  "decoder_attention_heads": 12,
+  "decoder_ffn_dim": 3072,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 6,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "encoder_attention_heads": 12,
+  "encoder_ffn_dim": 3072,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 6,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_decoder_position_embeddings": 1024,
+  "max_encoder_position_embeddings": 16384,
+  "model_type": "led",
+  "num_hidden_layers": 6,
+  "pad_token_id": 1,
+  "transformers_version": "4.3.0.dev0",
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+loading configuration file https://huggingface.co/allenai/led-base-16384/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/ec844bead6f5bbcd6ac727b57e595c2ba40b0970f91cb923423773f72fe1702f.898baac75d55d484b1b1de95b8ab791987c78591acf36ce6131b56d0d2d26af7
+Model config LEDConfig {
+  "_name_or_path": "./",
+  "activation_dropout": 0.0,
+  "activation_function": "gelu",
+  "architectures": [
+    "LEDForConditionalGeneration"
+  ],
+  "attention_dropout": 0.0,
+  "attention_window": [
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024
+  ],
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "classifier_dropout": 0.0,
+  "d_model": 768,
+  "decoder_attention_heads": 12,
+  "decoder_ffn_dim": 3072,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 6,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "encoder_attention_heads": 12,
+  "encoder_ffn_dim": 3072,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 6,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_decoder_position_embeddings": 1024,
+  "max_encoder_position_embeddings": 16384,
+  "model_type": "led",
+  "num_hidden_layers": 6,
+  "pad_token_id": 1,
+  "transformers_version": "4.3.0.dev0",
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+loading file https://huggingface.co/allenai/led-base-16384/resolve/main/vocab.json from cache at /root/.cache/huggingface/transformers/4fb25bb1f9a942a2e2930029211b4a7deaeb18b62f6e5ce6d59730c90da51373.647b4548b6d9ea817e82e7a9231a320231a1c9ea24053cc9e758f3fe68216f05
+loading file https://huggingface.co/allenai/led-base-16384/resolve/main/merges.txt from cache at /root/.cache/huggingface/transformers/087e8f4306cbf22e21907929074344a3b0a46bd680a118eb6267cd5a2bcec5b2.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+loading file https://huggingface.co/allenai/led-base-16384/resolve/main/tokenizer.json from cache at None
+loading weights file https://huggingface.co/allenai/led-base-16384/resolve/main/pytorch_model.bin from cache at /root/.cache/huggingface/transformers/c8f7e4603efbc329ce921b34057d78880dead50f45b2a1648b3a06ca6eb17f51.201222b06d46289037a8dccc57548abc8eb81ba042d3762214ac15c9691ff8c7
+All model checkpoint weights were used when initializing LEDForConditionalGeneration.
+
+All the weights of LEDForConditionalGeneration were initialized from the model checkpoint at allenai/led-base-16384.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use LEDForConditionalGeneration for predictions without further training.
+100% 1/1 [00:00<00:00,  1.19ba/s]
+100% 1/1 [00:00<00:00,  7.11ba/s]
+The following columns in the training set don't have a corresponding argument in `LEDForConditionalGeneration.forward` and have been ignored: .
+The following columns in the evaluation set don't have a corresponding argument in `LEDForConditionalGeneration.forward` and have been ignored: .
+***** Running training *****
+  Num examples = 79
+  Num Epochs = 3
+  Instantaneous batch size per device = 1
+  Total train batch size (w. parallel, distributed & accumulation) = 1
+  Gradient Accumulation steps = 1
+  Total optimization steps = 237
+  0% 0/237 [00:00<?, ?it/s]Input ids are automatically padded from 3599 to 4096 to be a multiple of `config.attention_window`: 1024
+  0% 1/237 [00:01<06:13,  1.58s/it]Input ids are automatically padded from 3582 to 4096 to be a multiple of `config.attention_window`: 1024
+  2% 5/237 [00:07<05:43,  1.48s/it]Input ids are automatically padded from 3554 to 4096 to be a multiple of `config.attention_window`: 1024
+  3% 6/237 [00:08<05:36,  1.46s/it]Input ids are automatically padded from 3542 to 4096 to be a multiple of `config.attention_window`: 1024
+  3% 7/237 [00:10<05:32,  1.45s/it]Input ids are automatically padded from 2358 to 3072 to be a multiple of `config.attention_window`: 1024
+  4% 9/237 [00:12<05:08,  1.35s/it]Input ids are automatically padded from 3113 to 4096 to be a multiple of `config.attention_window`: 1024
+  5% 11/237 [00:15<05:17,  1.40s/it]Input ids are automatically padded from 3533 to 4096 to be a multiple of `config.attention_window`: 1024
+  6% 15/237 [00:21<05:17,  1.43s/it]Input ids are automatically padded from 2988 to 3072 to be a multiple of `config.attention_window`: 1024
+  7% 16/237 [00:22<04:56,  1.34s/it]Input ids are automatically padded from 3109 to 4096 to be a multiple of `config.attention_window`: 1024
+  8% 19/237 [00:26<05:10,  1.42s/it]Input ids are automatically padded from 3673 to 4096 to be a multiple of `config.attention_window`: 1024
+  8% 20/237 [00:28<05:10,  1.43s/it]Input ids are automatically padded from 1889 to 2048 to be a multiple of `config.attention_window`: 1024
+  9% 22/237 [00:30<04:37,  1.29s/it]Input ids are automatically padded from 3528 to 4096 to be a multiple of `config.attention_window`: 1024
+ 11% 25/237 [00:34<04:57,  1.40s/it]Input ids are automatically padded from 3641 to 4096 to be a multiple of `config.attention_window`: 1024
+ 12% 28/237 [00:39<05:07,  1.47s/it]Input ids are automatically padded from 3403 to 4096 to be a multiple of `config.attention_window`: 1024
+ 14% 33/237 [00:46<05:02,  1.48s/it]Input ids are automatically padded from 3843 to 4096 to be a multiple of `config.attention_window`: 1024
+ 16% 39/237 [00:55<04:55,  1.49s/it]Input ids are automatically padded from 3701 to 4096 to be a multiple of `config.attention_window`: 1024
+ 17% 40/237 [00:57<04:53,  1.49s/it]Input ids are automatically padded from 2619 to 3072 to be a multiple of `config.attention_window`: 1024
+ 19% 45/237 [01:04<04:41,  1.47s/it]Input ids are automatically padded from 541 to 1024 to be a multiple of `config.attention_window`: 1024
+ 20% 47/237 [01:06<03:55,  1.24s/it]Input ids are automatically padded from 2614 to 3072 to be a multiple of `config.attention_window`: 1024
+ 22% 51/237 [01:11<04:23,  1.42s/it]Input ids are automatically padded from 3787 to 4096 to be a multiple of `config.attention_window`: 1024
+ 24% 57/237 [01:20<04:31,  1.51s/it]Input ids are automatically padded from 3120 to 4096 to be a multiple of `config.attention_window`: 1024
+ 24% 58/237 [01:22<04:27,  1.49s/it]Input ids are automatically padded from 4063 to 4096 to be a multiple of `config.attention_window`: 1024
+ 28% 67/237 [01:36<04:17,  1.51s/it]Input ids are automatically padded from 4017 to 4096 to be a multiple of `config.attention_window`: 1024
+ 33% 78/237 [01:52<04:01,  1.52s/it]Input ids are automatically padded from 3475 to 4096 to be a multiple of `config.attention_window`: 1024
+ 34% 81/237 [01:57<03:51,  1.48s/it]Input ids are automatically padded from 3787 to 4096 to be a multiple of `config.attention_window`: 1024
+ 35% 84/237 [02:01<03:46,  1.48s/it]Input ids are automatically padded from 3120 to 4096 to be a multiple of `config.attention_window`: 1024
+ 36% 86/237 [02:04<03:44,  1.49s/it]Input ids are automatically padded from 2614 to 3072 to be a multiple of `config.attention_window`: 1024
+ 37% 87/237 [02:05<03:26,  1.38s/it]Input ids are automatically padded from 3641 to 4096 to be a multiple of `config.attention_window`: 1024
+ 39% 92/237 [02:13<03:37,  1.50s/it]Input ids are automatically padded from 3843 to 4096 to be a multiple of `config.attention_window`: 1024
+ 40% 94/237 [02:16<03:31,  1.48s/it]Input ids are automatically padded from 3475 to 4096 to be a multiple of `config.attention_window`: 1024
+ 40% 95/237 [02:17<03:30,  1.49s/it]Input ids are automatically padded from 3542 to 4096 to be a multiple of `config.attention_window`: 1024
+ 43% 101/237 [02:26<03:23,  1.50s/it]Input ids are automatically padded from 1889 to 2048 to be a multiple of `config.attention_window`: 1024
+ 43% 103/237 [02:28<03:00,  1.35s/it]Input ids are automatically padded from 3109 to 4096 to be a multiple of `config.attention_window`: 1024
+ 45% 106/237 [02:33<03:10,  1.46s/it]Input ids are automatically padded from 4063 to 4096 to be a multiple of `config.attention_window`: 1024
+ 46% 109/237 [02:37<03:10,  1.49s/it]Input ids are automatically padded from 3673 to 4096 to be a multiple of `config.attention_window`: 1024
+ 49% 115/237 [02:46<03:02,  1.50s/it]Input ids are automatically padded from 3403 to 4096 to be a multiple of `config.attention_window`: 1024
+ 50% 118/237 [02:51<02:59,  1.51s/it]Input ids are automatically padded from 3701 to 4096 to be a multiple of `config.attention_window`: 1024
+ 52% 123/237 [02:58<02:50,  1.50s/it]Input ids are automatically padded from 3554 to 4096 to be a multiple of `config.attention_window`: 1024
+ 52% 124/237 [03:00<02:47,  1.48s/it]Input ids are automatically padded from 4017 to 4096 to be a multiple of `config.attention_window`: 1024
+ 53% 126/237 [03:03<02:47,  1.51s/it]Input ids are automatically padded from 3582 to 4096 to be a multiple of `config.attention_window`: 1024
+ 54% 129/237 [03:07<02:42,  1.50s/it]Input ids are automatically padded from 3599 to 4096 to be a multiple of `config.attention_window`: 1024
+ 55% 130/237 [03:09<02:39,  1.49s/it]Input ids are automatically padded from 2619 to 3072 to be a multiple of `config.attention_window`: 1024
+ 55% 131/237 [03:10<02:26,  1.38s/it]Input ids are automatically padded from 2988 to 3072 to be a multiple of `config.attention_window`: 1024
+ 61% 144/237 [03:29<02:20,  1.51s/it]Input ids are automatically padded from 3528 to 4096 to be a multiple of `config.attention_window`: 1024
+ 62% 146/237 [03:32<02:17,  1.51s/it]Input ids are automatically padded from 2358 to 3072 to be a multiple of `config.attention_window`: 1024
+ 64% 151/237 [03:40<02:09,  1.50s/it]Input ids are automatically padded from 541 to 1024 to be a multiple of `config.attention_window`: 1024
+ 65% 155/237 [03:44<01:53,  1.38s/it]Input ids are automatically padded from 3533 to 4096 to be a multiple of `config.attention_window`: 1024
+ 66% 156/237 [03:46<01:54,  1.41s/it]Input ids are automatically padded from 3113 to 4096 to be a multiple of `config.attention_window`: 1024
+ 67% 159/237 [03:50<01:53,  1.45s/it]Input ids are automatically padded from 3582 to 4096 to be a multiple of `config.attention_window`: 1024
+ 69% 163/237 [03:56<01:50,  1.49s/it]Input ids are automatically padded from 3787 to 4096 to be a multiple of `config.attention_window`: 1024
+ 69% 164/237 [03:58<01:48,  1.48s/it]Input ids are automatically padded from 3554 to 4096 to be a multiple of `config.attention_window`: 1024
+ 71% 168/237 [04:04<01:44,  1.51s/it]Input ids are automatically padded from 3599 to 4096 to be a multiple of `config.attention_window`: 1024
+ 73% 173/237 [04:11<01:35,  1.50s/it]Input ids are automatically padded from 2988 to 3072 to be a multiple of `config.attention_window`: 1024
+ 74% 175/237 [04:14<01:29,  1.44s/it]Input ids are automatically padded from 3109 to 4096 to be a multiple of `config.attention_window`: 1024
+ 78% 184/237 [04:28<01:18,  1.49s/it]Input ids are automatically padded from 3120 to 4096 to be a multiple of `config.attention_window`: 1024
+ 79% 187/237 [04:32<01:14,  1.49s/it]Input ids are automatically padded from 4063 to 4096 to be a multiple of `config.attention_window`: 1024
+ 82% 194/237 [04:43<01:04,  1.51s/it]Input ids are automatically padded from 2358 to 3072 to be a multiple of `config.attention_window`: 1024
+ 84% 199/237 [04:50<00:56,  1.48s/it]Input ids are automatically padded from 3673 to 4096 to be a multiple of `config.attention_window`: 1024
+ 85% 202/237 [04:54<00:51,  1.48s/it]Input ids are automatically padded from 2619 to 3072 to be a multiple of `config.attention_window`: 1024
+ 86% 203/237 [04:55<00:46,  1.38s/it]Input ids are automatically padded from 1889 to 2048 to be a multiple of `config.attention_window`: 1024
+ 86% 204/237 [04:56<00:39,  1.20s/it]Input ids are automatically padded from 3533 to 4096 to be a multiple of `config.attention_window`: 1024
+ 86% 205/237 [04:58<00:40,  1.28s/it]Input ids are automatically padded from 3403 to 4096 to be a multiple of `config.attention_window`: 1024
+ 89% 210/237 [05:05<00:39,  1.47s/it]Input ids are automatically padded from 3113 to 4096 to be a multiple of `config.attention_window`: 1024
+ 89% 212/237 [05:08<00:37,  1.49s/it]Input ids are automatically padded from 3701 to 4096 to be a multiple of `config.attention_window`: 1024
+ 90% 213/237 [05:10<00:35,  1.49s/it]Input ids are automatically padded from 4017 to 4096 to be a multiple of `config.attention_window`: 1024
+ 92% 217/237 [05:16<00:30,  1.50s/it]Input ids are automatically padded from 3843 to 4096 to be a multiple of `config.attention_window`: 1024
+ 92% 218/237 [05:17<00:28,  1.50s/it]Input ids are automatically padded from 2614 to 3072 to be a multiple of `config.attention_window`: 1024
+ 94% 222/237 [05:23<00:21,  1.46s/it]Input ids are automatically padded from 3641 to 4096 to be a multiple of `config.attention_window`: 1024
+ 96% 227/237 [05:30<00:14,  1.48s/it]Input ids are automatically padded from 541 to 1024 to be a multiple of `config.attention_window`: 1024
+ 96% 228/237 [05:31<00:10,  1.16s/it]Input ids are automatically padded from 3475 to 4096 to be a multiple of `config.attention_window`: 1024
+ 99% 234/237 [05:40<00:04,  1.46s/it]Input ids are automatically padded from 3542 to 4096 to be a multiple of `config.attention_window`: 1024
+ 99% 235/237 [05:41<00:02,  1.47s/it]Input ids are automatically padded from 3528 to 4096 to be a multiple of `config.attention_window`: 1024
+{'train_runtime': 344.5836, 'train_samples_per_second': 0.688, 'epoch': 3.0}
+100% 237/237 [05:44<00:00,  1.45s/it]
+Saving model checkpoint to /content/drive/MyDrive/longformers/models/legal-led-base-16384_79_14_split
+Configuration saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_79_14_split/config.json
+Model weights saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_79_14_split/pytorch_model.bin
+02/16/2021 16:15:00 - INFO - __main__ -   ***** Train results *****
+02/16/2021 16:15:00 - INFO - __main__ -     epoch = 3.0
+02/16/2021 16:15:00 - INFO - __main__ -     train_runtime = 344.5836
+02/16/2021 16:15:00 - INFO - __main__ -     train_samples_per_second = 0.688
+
+
+Running Evaluation Script
+1it [00:04,  4.60s/it]Input ids are automatically padded from 3743 to 4096 to be a multiple of `config.attention_window`: 1024
+2it [00:09,  4.79s/it]Input ids are automatically padded from 3082 to 4096 to be a multiple of `config.attention_window`: 1024
+4it [00:20,  5.02s/it]Input ids are automatically padded from 1690 to 2048 to be a multiple of `config.attention_window`: 1024
+14it [01:02,  4.47s/it]
+Evaluation Completed
+Evaluation results saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_79_14_split/14-test_results.csv
+Evaluation scores saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_79_14_split/evaluation_scores.txt

@@ -11,7 +11,7 @@ Transformers (4.3.0) has LED (Longformer Encoder Decoder) model which is based o
 LEDForConditionalGeneration is an extension of BartForConditionalGeneration exchanging the traditional self-attention layer with Longformer’s chunked self-attention layer. 
 LEDTokenizer is an alias of BartTokenizer. 
 
-Hence LEDs are the same as longBART.
+Hence LEDs are the same as longBART. 
 
 LED models: 
     allenai/led-base-16384
