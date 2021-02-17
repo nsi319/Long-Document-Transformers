@@ -1,6 +1,4 @@
-# LongFormer-Models
-
-## Finetuning and evaluating longformer models on sequence to sequence tasks
+# Long Document Transformers 
 
 Transformers (4.3.0) has  **Longformer Encoder Decoder (LED)** models which is based on BART's architecture and supports **long document generative sequence-to-sequence tasks**.
 
@@ -14,21 +12,22 @@ Transformers (4.3.0) has  **Longformer Encoder Decoder (LED)** models which is b
 
 Checkout [pre-trained models](https://huggingface.co/models) to see the checkpoints available for each of them.
 
-## Script
+## Script 
 
-Finetuning LED models for summarization on a [`legal dataset`](https://github.com/nsi319/LongFormer-Models/blob/main/dataset/2018_final.csv):
-
+### Finetuning and evaluating LED models on summarization task
 
 We will be using the finetuning script [run.py](https://github.com/nsi319/Finetune-Transformers/blob/main/run.py) which leverages ```Seq2SeqTrainer```. For more information regarding sequence-to-sequence finetuning, visit [Finetune-Transformers](https://github.com/nsi319/Finetune-Transformers). 
 
 For finetuning LED models, set ```--model_name_or_path``` to ```allenai/led-base-16384``` or ```allenai/led-large-16384``` to summarize documents of max length 16,384 tokens.
 
+Here is a sample code to finetune ```allenai/led-large-16384``` for summarization on [`legal dataset`](https://github.com/nsi319/LongFormer-Models/blob/main/dataset/2018_final.csv):
+
 ```bash
 python run.py  \
-    --model_name_or_path allenai/led-base-16384 \
+    --model_name_or_path allenai/led-large-16384 \
     --train_file dataset/train.csv \
     --validation_file dataset/valid.csv \
-    --output_dir legal-led-base-16384-results/new-legal-base-16384-model \
+    --output_dir legal-led-outputs/new-legal-large-16384-model \
     --overwrite_output_dir \
     --do_train \
     --do_eval \
@@ -48,7 +47,7 @@ python run.py  \
 
 If you are using **Google Colab**, Open [`led-finetune.ipynb`](https://github.com/nsi319/LongFormer-Models/blob/main/led_finetune.ipynb) in Colab, save a copy in Drive and follow the instructions. 
 
-***
+### Converting BART to LONGBART
 
 To convert bart to long-bart (longformer encoder decoder bart) (using LongformerSelfAttention, increased attention window and positional embeddings):
 
