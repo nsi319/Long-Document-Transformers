@@ -1,0 +1,179 @@
+2021-02-17 07:33:37.923109: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+02/17/2021 07:33:39 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+02/17/2021 07:33:39 - INFO - __main__ -   Training/evaluation parameters Seq2SeqTrainingArguments(output_dir='/content/drive/MyDrive/longformers/models/eval-legal-led-base-16384_max_st_6144_550_summ_350_500', overwrite_output_dir=True, do_train=False, do_eval=True, do_predict=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=1, per_device_eval_batch_size=1, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, lr_scheduler_type=<SchedulerType.LINEAR: 'linear'>, warmup_steps=0, logging_dir='runs/Feb17_07-33-39_b3fc3f311ef6', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', fp16_backend='auto', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='/content/drive/MyDrive/longformers/models/eval-legal-led-base-16384_max_st_6144_550_summ_350_500', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None, ignore_data_skip=False, sharded_ddp=False, deepspeed=None, label_smoothing_factor=0.0, adafactor=False, group_by_length=False, report_to=['tensorboard'], sortish_sampler=False, predict_with_generate=True)
+02/17/2021 07:33:39 - WARNING - datasets.builder -   Using custom data configuration default-d7fb7209bb01c126
+02/17/2021 07:33:39 - WARNING - datasets.builder -   Reusing dataset csv (/root/.cache/huggingface/datasets/csv/default-d7fb7209bb01c126/0.0.0/965b6429be0fc05f975b608ce64e1fa941cc8fb4f30629b523d2390f3c0e1a93)
+loading configuration file /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_86_16/config.json
+Model config LEDConfig {
+  "_name_or_path": "allenai/led-base-16384",
+  "activation_dropout": 0.0,
+  "activation_function": "gelu",
+  "architectures": [
+    "LEDForConditionalGeneration"
+  ],
+  "attention_dropout": 0.0,
+  "attention_window": [
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024
+  ],
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "classifier_dropout": 0.0,
+  "d_model": 768,
+  "decoder_attention_heads": 12,
+  "decoder_ffn_dim": 3072,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 6,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "encoder_attention_heads": 12,
+  "encoder_ffn_dim": 3072,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 6,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_decoder_position_embeddings": 1024,
+  "max_encoder_position_embeddings": 16384,
+  "model_type": "led",
+  "num_hidden_layers": 6,
+  "pad_token_id": 1,
+  "transformers_version": "4.3.0.dev0",
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+loading configuration file /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_86_16/config.json
+Model config LEDConfig {
+  "_name_or_path": "allenai/led-base-16384",
+  "activation_dropout": 0.0,
+  "activation_function": "gelu",
+  "architectures": [
+    "LEDForConditionalGeneration"
+  ],
+  "attention_dropout": 0.0,
+  "attention_window": [
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024
+  ],
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "classifier_dropout": 0.0,
+  "d_model": 768,
+  "decoder_attention_heads": 12,
+  "decoder_ffn_dim": 3072,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 6,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "encoder_attention_heads": 12,
+  "encoder_ffn_dim": 3072,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 6,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_decoder_position_embeddings": 1024,
+  "max_encoder_position_embeddings": 16384,
+  "model_type": "led",
+  "num_hidden_layers": 6,
+  "pad_token_id": 1,
+  "transformers_version": "4.3.0.dev0",
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+Model name '/content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_86_16' not found in model shortcut name list (allenai/led-base-16384). Assuming '/content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_86_16' is a path, a model identifier, or url to a directory containing tokenizer files.
+Didn't find file /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_86_16/tokenizer.json. We won't load it.
+Didn't find file /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_86_16/added_tokens.json. We won't load it.
+loading file /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_86_16/vocab.json
+loading file /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_86_16/merges.txt
+loading file None
+loading file None
+loading file /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_86_16/special_tokens_map.json
+loading file /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_86_16/tokenizer_config.json
+loading weights file /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_86_16/pytorch_model.bin
+All model checkpoint weights were used when initializing LEDForConditionalGeneration.
+
+All the weights of LEDForConditionalGeneration were initialized from the model checkpoint at /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_86_16.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use LEDForConditionalGeneration for predictions without further training.
+100% 1/1 [00:01<00:00,  1.21s/ba]
+Downloading: 5.61kB [00:00, 5.42MB/s]       
+The following columns in the evaluation set don't have a corresponding argument in `LEDForConditionalGeneration.forward` and have been ignored: .
+
+
+Running Evaluation Script
+6it [00:29,  4.73s/it]Input ids are automatically padded from 4841 to 5120 to be a multiple of `config.attention_window`: 1024
+8it [00:37,  4.54s/it]Input ids are automatically padded from 2057 to 3072 to be a multiple of `config.attention_window`: 1024
+10it [00:46,  4.40s/it]Input ids are automatically padded from 4140 to 5120 to be a multiple of `config.attention_window`: 1024
+12it [00:54,  4.43s/it]Input ids are automatically padded from 4419 to 5120 to be a multiple of `config.attention_window`: 1024
+13it [00:58,  4.28s/it]Input ids are automatically padded from 3150 to 4096 to be a multiple of `config.attention_window`: 1024
+22it [01:38,  4.50s/it]Input ids are automatically padded from 4709 to 5120 to be a multiple of `config.attention_window`: 1024
+24it [01:47,  4.46s/it]Input ids are automatically padded from 4159 to 5120 to be a multiple of `config.attention_window`: 1024
+25it [01:51,  4.41s/it]Input ids are automatically padded from 4127 to 5120 to be a multiple of `config.attention_window`: 1024
+29it [02:09,  4.55s/it]Input ids are automatically padded from 3868 to 4096 to be a multiple of `config.attention_window`: 1024
+30it [02:13,  4.34s/it]Input ids are automatically padded from 2641 to 3072 to be a multiple of `config.attention_window`: 1024
+31it [02:17,  4.22s/it]Input ids are automatically padded from 2625 to 3072 to be a multiple of `config.attention_window`: 1024
+32it [02:21,  4.17s/it]Input ids are automatically padded from 4958 to 5120 to be a multiple of `config.attention_window`: 1024
+33it [02:25,  4.13s/it]Input ids are automatically padded from 3601 to 4096 to be a multiple of `config.attention_window`: 1024
+34it [02:30,  4.14s/it]Input ids are automatically padded from 3519 to 4096 to be a multiple of `config.attention_window`: 1024
+35it [02:34,  4.09s/it]Input ids are automatically padded from 3744 to 4096 to be a multiple of `config.attention_window`: 1024
+37it [02:43,  4.34s/it]Input ids are automatically padded from 3486 to 4096 to be a multiple of `config.attention_window`: 1024
+39it [02:50,  4.14s/it]Input ids are automatically padded from 1889 to 2048 to be a multiple of `config.attention_window`: 1024
+40it [02:54,  4.04s/it]Input ids are automatically padded from 3763 to 4096 to be a multiple of `config.attention_window`: 1024
+41it [02:58,  4.03s/it]Input ids are automatically padded from 3360 to 4096 to be a multiple of `config.attention_window`: 1024
+42it [03:02,  3.96s/it]Input ids are automatically padded from 4173 to 5120 to be a multiple of `config.attention_window`: 1024
+45it [03:15,  4.16s/it]Input ids are automatically padded from 3500 to 4096 to be a multiple of `config.attention_window`: 1024
+46it [03:19,  4.11s/it]Input ids are automatically padded from 3529 to 4096 to be a multiple of `config.attention_window`: 1024
+52it [03:44,  4.16s/it]Input ids are automatically padded from 3123 to 4096 to be a multiple of `config.attention_window`: 1024
+56it [04:00,  4.05s/it]Input ids are automatically padded from 4810 to 5120 to be a multiple of `config.attention_window`: 1024
+59it [04:13,  4.17s/it]Input ids are automatically padded from 3638 to 4096 to be a multiple of `config.attention_window`: 1024
+62it [04:26,  4.13s/it]Input ids are automatically padded from 4643 to 5120 to be a multiple of `config.attention_window`: 1024
+63it [04:30,  4.19s/it]Input ids are automatically padded from 1747 to 2048 to be a multiple of `config.attention_window`: 1024
+64it [04:33,  4.00s/it]Input ids are automatically padded from 4232 to 5120 to be a multiple of `config.attention_window`: 1024
+67it [04:47,  4.44s/it]Input ids are automatically padded from 3050 to 3072 to be a multiple of `config.attention_window`: 1024
+70it [05:01,  4.64s/it]Input ids are automatically padded from 3472 to 4096 to be a multiple of `config.attention_window`: 1024
+73it [05:14,  4.30s/it]Input ids are automatically padded from 2358 to 3072 to be a multiple of `config.attention_window`: 1024
+74it [05:17,  4.13s/it]Input ids are automatically padded from 3403 to 4096 to be a multiple of `config.attention_window`: 1024
+75it [05:21,  4.09s/it]Input ids are automatically padded from 4747 to 5120 to be a multiple of `config.attention_window`: 1024
+78it [05:35,  4.36s/it]Input ids are automatically padded from 3767 to 4096 to be a multiple of `config.attention_window`: 1024
+87it [06:14,  4.47s/it]Input ids are automatically padded from 511 to 1024 to be a multiple of `config.attention_window`: 1024
+90it [06:27,  4.32s/it]Input ids are automatically padded from 3791 to 4096 to be a multiple of `config.attention_window`: 1024
+93it [06:42,  4.80s/it]Input ids are automatically padded from 2980 to 3072 to be a multiple of `config.attention_window`: 1024
+95it [06:51,  4.67s/it]Input ids are automatically padded from 4063 to 4096 to be a multiple of `config.attention_window`: 1024
+97it [07:01,  4.90s/it]Input ids are automatically padded from 4785 to 5120 to be a multiple of `config.attention_window`: 1024
+101it [07:18,  4.46s/it]Input ids are automatically padded from 3702 to 4096 to be a multiple of `config.attention_window`: 1024
+102it [07:22,  4.33s/it]
+Evaluation Completed
+Evaluation results saved in /content/drive/MyDrive/longformers/models/eval-legal-led-base-16384_max_st_6144_550_summ_350_500/102-test_results.csv
+Evaluation scores saved in /content/drive/MyDrive/longformers/models/eval-legal-led-base-16384_max_st_6144_550_summ_350_500/evaluation_scores.txt
