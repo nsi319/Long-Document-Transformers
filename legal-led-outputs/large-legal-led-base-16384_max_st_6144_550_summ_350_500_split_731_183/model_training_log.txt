@@ -1,0 +1,1053 @@
+2021-02-19 10:42:36.658687: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+02/19/2021 10:42:38 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+02/19/2021 10:42:38 - INFO - __main__ -   Training/evaluation parameters Seq2SeqTrainingArguments(output_dir='/content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183', overwrite_output_dir=True, do_train=True, do_eval=True, do_predict=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=1, per_device_eval_batch_size=1, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=5e-05, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=3.0, max_steps=-1, lr_scheduler_type=<SchedulerType.LINEAR: 'linear'>, warmup_steps=0, logging_dir='runs/Feb19_10-42-38_396f663ec646', logging_first_step=False, logging_steps=500, save_steps=500, save_total_limit=None, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', fp16_backend='auto', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=500, dataloader_num_workers=0, past_index=-1, run_name='/content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183', disable_tqdm=False, remove_unused_columns=True, label_names=None, load_best_model_at_end=False, metric_for_best_model=None, greater_is_better=None, ignore_data_skip=False, sharded_ddp=False, deepspeed=None, label_smoothing_factor=0.0, adafactor=False, group_by_length=False, report_to=['tensorboard'], sortish_sampler=False, predict_with_generate=True)
+02/19/2021 10:42:39 - WARNING - datasets.builder -   Using custom data configuration default-acfc3c2f0c5ede0e
+Downloading and preparing dataset csv/default (download: Unknown size, generated: Unknown size, post-processed: Unknown size, total: Unknown size) to /root/.cache/huggingface/datasets/csv/default-acfc3c2f0c5ede0e/0.0.0/965b6429be0fc05f975b608ce64e1fa941cc8fb4f30629b523d2390f3c0e1a93...
+Dataset csv downloaded and prepared to /root/.cache/huggingface/datasets/csv/default-acfc3c2f0c5ede0e/0.0.0/965b6429be0fc05f975b608ce64e1fa941cc8fb4f30629b523d2390f3c0e1a93. Subsequent calls will reuse this data.
+02/19/2021 10:42:39 - INFO - filelock -   Lock 139857438643984 acquired on /root/.cache/huggingface/transformers/ec844bead6f5bbcd6ac727b57e595c2ba40b0970f91cb923423773f72fe1702f.898baac75d55d484b1b1de95b8ab791987c78591acf36ce6131b56d0d2d26af7.lock
+https://huggingface.co/allenai/led-base-16384/resolve/main/config.json not found in cache or force_download set to True, downloading to /root/.cache/huggingface/transformers/tmp12ugm4qg
+Downloading: 100% 1.09k/1.09k [00:00<00:00, 921kB/s]
+storing https://huggingface.co/allenai/led-base-16384/resolve/main/config.json in cache at /root/.cache/huggingface/transformers/ec844bead6f5bbcd6ac727b57e595c2ba40b0970f91cb923423773f72fe1702f.898baac75d55d484b1b1de95b8ab791987c78591acf36ce6131b56d0d2d26af7
+creating metadata file for /root/.cache/huggingface/transformers/ec844bead6f5bbcd6ac727b57e595c2ba40b0970f91cb923423773f72fe1702f.898baac75d55d484b1b1de95b8ab791987c78591acf36ce6131b56d0d2d26af7
+02/19/2021 10:42:40 - INFO - filelock -   Lock 139857438643984 released on /root/.cache/huggingface/transformers/ec844bead6f5bbcd6ac727b57e595c2ba40b0970f91cb923423773f72fe1702f.898baac75d55d484b1b1de95b8ab791987c78591acf36ce6131b56d0d2d26af7.lock
+loading configuration file https://huggingface.co/allenai/led-base-16384/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/ec844bead6f5bbcd6ac727b57e595c2ba40b0970f91cb923423773f72fe1702f.898baac75d55d484b1b1de95b8ab791987c78591acf36ce6131b56d0d2d26af7
+Model config LEDConfig {
+  "_name_or_path": "./",
+  "activation_dropout": 0.0,
+  "activation_function": "gelu",
+  "architectures": [
+    "LEDForConditionalGeneration"
+  ],
+  "attention_dropout": 0.0,
+  "attention_window": [
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024
+  ],
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "classifier_dropout": 0.0,
+  "d_model": 768,
+  "decoder_attention_heads": 12,
+  "decoder_ffn_dim": 3072,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 6,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "encoder_attention_heads": 12,
+  "encoder_ffn_dim": 3072,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 6,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_decoder_position_embeddings": 1024,
+  "max_encoder_position_embeddings": 16384,
+  "model_type": "led",
+  "num_hidden_layers": 6,
+  "pad_token_id": 1,
+  "transformers_version": "4.3.0.dev0",
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+loading configuration file https://huggingface.co/allenai/led-base-16384/resolve/main/config.json from cache at /root/.cache/huggingface/transformers/ec844bead6f5bbcd6ac727b57e595c2ba40b0970f91cb923423773f72fe1702f.898baac75d55d484b1b1de95b8ab791987c78591acf36ce6131b56d0d2d26af7
+Model config LEDConfig {
+  "_name_or_path": "./",
+  "activation_dropout": 0.0,
+  "activation_function": "gelu",
+  "architectures": [
+    "LEDForConditionalGeneration"
+  ],
+  "attention_dropout": 0.0,
+  "attention_window": [
+    1024,
+    1024,
+    1024,
+    1024,
+    1024,
+    1024
+  ],
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "classifier_dropout": 0.0,
+  "d_model": 768,
+  "decoder_attention_heads": 12,
+  "decoder_ffn_dim": 3072,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 6,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "encoder_attention_heads": 12,
+  "encoder_ffn_dim": 3072,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 6,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_decoder_position_embeddings": 1024,
+  "max_encoder_position_embeddings": 16384,
+  "model_type": "led",
+  "num_hidden_layers": 6,
+  "pad_token_id": 1,
+  "transformers_version": "4.3.0.dev0",
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+02/19/2021 10:42:40 - INFO - filelock -   Lock 139855985412696 acquired on /root/.cache/huggingface/transformers/4fb25bb1f9a942a2e2930029211b4a7deaeb18b62f6e5ce6d59730c90da51373.647b4548b6d9ea817e82e7a9231a320231a1c9ea24053cc9e758f3fe68216f05.lock
+https://huggingface.co/allenai/led-base-16384/resolve/main/vocab.json not found in cache or force_download set to True, downloading to /root/.cache/huggingface/transformers/tmp69c6lzyk
+Downloading: 100% 899k/899k [00:00<00:00, 2.29MB/s]
+storing https://huggingface.co/allenai/led-base-16384/resolve/main/vocab.json in cache at /root/.cache/huggingface/transformers/4fb25bb1f9a942a2e2930029211b4a7deaeb18b62f6e5ce6d59730c90da51373.647b4548b6d9ea817e82e7a9231a320231a1c9ea24053cc9e758f3fe68216f05
+creating metadata file for /root/.cache/huggingface/transformers/4fb25bb1f9a942a2e2930029211b4a7deaeb18b62f6e5ce6d59730c90da51373.647b4548b6d9ea817e82e7a9231a320231a1c9ea24053cc9e758f3fe68216f05
+02/19/2021 10:42:41 - INFO - filelock -   Lock 139855985412696 released on /root/.cache/huggingface/transformers/4fb25bb1f9a942a2e2930029211b4a7deaeb18b62f6e5ce6d59730c90da51373.647b4548b6d9ea817e82e7a9231a320231a1c9ea24053cc9e758f3fe68216f05.lock
+02/19/2021 10:42:41 - INFO - filelock -   Lock 139855985299184 acquired on /root/.cache/huggingface/transformers/087e8f4306cbf22e21907929074344a3b0a46bd680a118eb6267cd5a2bcec5b2.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b.lock
+https://huggingface.co/allenai/led-base-16384/resolve/main/merges.txt not found in cache or force_download set to True, downloading to /root/.cache/huggingface/transformers/tmpvu1fs7v5
+Downloading: 100% 456k/456k [00:00<00:00, 1.46MB/s]
+storing https://huggingface.co/allenai/led-base-16384/resolve/main/merges.txt in cache at /root/.cache/huggingface/transformers/087e8f4306cbf22e21907929074344a3b0a46bd680a118eb6267cd5a2bcec5b2.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+creating metadata file for /root/.cache/huggingface/transformers/087e8f4306cbf22e21907929074344a3b0a46bd680a118eb6267cd5a2bcec5b2.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+02/19/2021 10:42:42 - INFO - filelock -   Lock 139855985299184 released on /root/.cache/huggingface/transformers/087e8f4306cbf22e21907929074344a3b0a46bd680a118eb6267cd5a2bcec5b2.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b.lock
+loading file https://huggingface.co/allenai/led-base-16384/resolve/main/vocab.json from cache at /root/.cache/huggingface/transformers/4fb25bb1f9a942a2e2930029211b4a7deaeb18b62f6e5ce6d59730c90da51373.647b4548b6d9ea817e82e7a9231a320231a1c9ea24053cc9e758f3fe68216f05
+loading file https://huggingface.co/allenai/led-base-16384/resolve/main/merges.txt from cache at /root/.cache/huggingface/transformers/087e8f4306cbf22e21907929074344a3b0a46bd680a118eb6267cd5a2bcec5b2.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+loading file https://huggingface.co/allenai/led-base-16384/resolve/main/tokenizer.json from cache at None
+02/19/2021 10:42:42 - INFO - filelock -   Lock 139855985299184 acquired on /root/.cache/huggingface/transformers/c8f7e4603efbc329ce921b34057d78880dead50f45b2a1648b3a06ca6eb17f51.201222b06d46289037a8dccc57548abc8eb81ba042d3762214ac15c9691ff8c7.lock
+https://huggingface.co/allenai/led-base-16384/resolve/main/pytorch_model.bin not found in cache or force_download set to True, downloading to /root/.cache/huggingface/transformers/tmpkj1lg2j7
+Downloading: 100% 648M/648M [00:08<00:00, 77.8MB/s]
+storing https://huggingface.co/allenai/led-base-16384/resolve/main/pytorch_model.bin in cache at /root/.cache/huggingface/transformers/c8f7e4603efbc329ce921b34057d78880dead50f45b2a1648b3a06ca6eb17f51.201222b06d46289037a8dccc57548abc8eb81ba042d3762214ac15c9691ff8c7
+creating metadata file for /root/.cache/huggingface/transformers/c8f7e4603efbc329ce921b34057d78880dead50f45b2a1648b3a06ca6eb17f51.201222b06d46289037a8dccc57548abc8eb81ba042d3762214ac15c9691ff8c7
+02/19/2021 10:42:51 - INFO - filelock -   Lock 139855985299184 released on /root/.cache/huggingface/transformers/c8f7e4603efbc329ce921b34057d78880dead50f45b2a1648b3a06ca6eb17f51.201222b06d46289037a8dccc57548abc8eb81ba042d3762214ac15c9691ff8c7.lock
+loading weights file https://huggingface.co/allenai/led-base-16384/resolve/main/pytorch_model.bin from cache at /root/.cache/huggingface/transformers/c8f7e4603efbc329ce921b34057d78880dead50f45b2a1648b3a06ca6eb17f51.201222b06d46289037a8dccc57548abc8eb81ba042d3762214ac15c9691ff8c7
+All model checkpoint weights were used when initializing LEDForConditionalGeneration.
+
+All the weights of LEDForConditionalGeneration were initialized from the model checkpoint at allenai/led-base-16384.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use LEDForConditionalGeneration for predictions without further training.
+100% 1/1 [00:11<00:00, 11.68s/ba]
+100% 1/1 [00:03<00:00,  3.10s/ba]
+Downloading: 5.61kB [00:00, 4.86MB/s]       
+The following columns in the training set don't have a corresponding argument in `LEDForConditionalGeneration.forward` and have been ignored: .
+The following columns in the evaluation set don't have a corresponding argument in `LEDForConditionalGeneration.forward` and have been ignored: .
+***** Running training *****
+  Num examples = 731
+  Num Epochs = 3
+  Instantaneous batch size per device = 1
+  Total train batch size (w. parallel, distributed & accumulation) = 1
+  Gradient Accumulation steps = 1
+  Total optimization steps = 2193
+  0% 3/2193 [00:05<1:08:44,  1.88s/it]Input ids are automatically padded from 2498 to 3072 to be a multiple of `config.attention_window`: 1024
+  0% 8/2193 [00:13<1:03:31,  1.74s/it]Input ids are automatically padded from 394 to 1024 to be a multiple of `config.attention_window`: 1024
+  1% 11/2193 [00:17<57:24,  1.58s/it]Input ids are automatically padded from 4762 to 5120 to be a multiple of `config.attention_window`: 1024
+  1% 12/2193 [00:19<59:34,  1.64s/it]Input ids are automatically padded from 560 to 1024 to be a multiple of `config.attention_window`: 1024
+  1% 13/2193 [00:19<46:22,  1.28s/it]Input ids are automatically padded from 5065 to 5120 to be a multiple of `config.attention_window`: 1024
+  1% 18/2193 [00:29<1:02:18,  1.72s/it]Input ids are automatically padded from 2625 to 3072 to be a multiple of `config.attention_window`: 1024
+  1% 20/2193 [00:31<58:24,  1.61s/it]Input ids are automatically padded from 3472 to 4096 to be a multiple of `config.attention_window`: 1024
+  1% 23/2193 [00:36<1:00:16,  1.67s/it]Input ids are automatically padded from 2543 to 3072 to be a multiple of `config.attention_window`: 1024
+  1% 28/2193 [00:45<1:01:48,  1.71s/it]Input ids are automatically padded from 3403 to 4096 to be a multiple of `config.attention_window`: 1024
+  2% 34/2193 [00:55<1:03:28,  1.76s/it]Input ids are automatically padded from 4829 to 5120 to be a multiple of `config.attention_window`: 1024
+  2% 35/2193 [00:57<1:03:47,  1.77s/it]Input ids are automatically padded from 1142 to 2048 to be a multiple of `config.attention_window`: 1024
+  2% 39/2193 [01:03<1:00:05,  1.67s/it]Input ids are automatically padded from 3368 to 4096 to be a multiple of `config.attention_window`: 1024
+  2% 43/2193 [01:10<1:02:20,  1.74s/it]Input ids are automatically padded from 3763 to 4096 to be a multiple of `config.attention_window`: 1024
+  2% 44/2193 [01:11<59:15,  1.65s/it]  Input ids are automatically padded from 5092 to 5120 to be a multiple of `config.attention_window`: 1024
+  2% 45/2193 [01:13<1:00:51,  1.70s/it]Input ids are automatically padded from 1332 to 2048 to be a multiple of `config.attention_window`: 1024
+  2% 47/2193 [01:16<55:29,  1.55s/it]Input ids are automatically padded from 4677 to 5120 to be a multiple of `config.attention_window`: 1024
+  2% 54/2193 [01:28<1:03:35,  1.78s/it]Input ids are automatically padded from 3472 to 4096 to be a multiple of `config.attention_window`: 1024
+  3% 56/2193 [01:32<1:01:26,  1.73s/it]Input ids are automatically padded from 4230 to 5120 to be a multiple of `config.attention_window`: 1024
+  3% 57/2193 [01:33<1:01:43,  1.73s/it]Input ids are automatically padded from 379 to 1024 to be a multiple of `config.attention_window`: 1024
+  3% 58/2193 [01:34<48:04,  1.35s/it]  Input ids are automatically padded from 3024 to 3072 to be a multiple of `config.attention_window`: 1024
+  3% 61/2193 [01:39<55:32,  1.56s/it]Input ids are automatically padded from 4634 to 5120 to be a multiple of `config.attention_window`: 1024
+  3% 71/2193 [01:57<1:03:41,  1.80s/it]Input ids are automatically padded from 724 to 1024 to be a multiple of `config.attention_window`: 1024
+  3% 74/2193 [02:01<57:18,  1.62s/it]Input ids are automatically padded from 452 to 1024 to be a multiple of `config.attention_window`: 1024
+  3% 75/2193 [02:01<44:34,  1.26s/it]Input ids are automatically padded from 4355 to 5120 to be a multiple of `config.attention_window`: 1024
+  3% 76/2193 [02:03<49:51,  1.41s/it]Input ids are automatically padded from 4040 to 4096 to be a multiple of `config.attention_window`: 1024
+  4% 81/2193 [02:12<1:01:09,  1.74s/it]Input ids are automatically padded from 3718 to 4096 to be a multiple of `config.attention_window`: 1024
+  4% 83/2193 [02:15<1:00:19,  1.72s/it]Input ids are automatically padded from 871 to 1024 to be a multiple of `config.attention_window`: 1024
+  4% 87/2193 [02:21<58:21,  1.66s/it]Input ids are automatically padded from 689 to 1024 to be a multiple of `config.attention_window`: 1024
+  4% 91/2193 [02:27<58:33,  1.67s/it]Input ids are automatically padded from 5107 to 5120 to be a multiple of `config.attention_window`: 1024
+  4% 92/2193 [02:29<59:45,  1.71s/it]Input ids are automatically padded from 3353 to 4096 to be a multiple of `config.attention_window`: 1024
+  4% 96/2193 [02:36<1:02:20,  1.78s/it]Input ids are automatically padded from 746 to 1024 to be a multiple of `config.attention_window`: 1024
+  4% 97/2193 [02:36<48:27,  1.39s/it]  Input ids are automatically padded from 4106 to 5120 to be a multiple of `config.attention_window`: 1024
+  5% 101/2193 [02:44<59:46,  1.71s/it]Input ids are automatically padded from 4690 to 5120 to be a multiple of `config.attention_window`: 1024
+  5% 102/2193 [02:45<1:00:28,  1.74s/it]Input ids are automatically padded from 4434 to 5120 to be a multiple of `config.attention_window`: 1024
+  5% 103/2193 [02:47<1:00:51,  1.75s/it]Input ids are automatically padded from 3050 to 3072 to be a multiple of `config.attention_window`: 1024
+  5% 112/2193 [03:03<1:03:29,  1.83s/it]Input ids are automatically padded from 1766 to 2048 to be a multiple of `config.attention_window`: 1024
+  5% 113/2193 [03:04<53:08,  1.53s/it]  Input ids are automatically padded from 786 to 1024 to be a multiple of `config.attention_window`: 1024
+  6% 122/2193 [03:19<1:02:20,  1.81s/it]Input ids are automatically padded from 912 to 1024 to be a multiple of `config.attention_window`: 1024
+  6% 123/2193 [03:20<48:19,  1.40s/it]  Input ids are automatically padded from 2099 to 3072 to be a multiple of `config.attention_window`: 1024
+  6% 126/2193 [03:24<53:50,  1.56s/it]Input ids are automatically padded from 4709 to 5120 to be a multiple of `config.attention_window`: 1024
+  6% 132/2193 [03:36<1:02:36,  1.82s/it]Input ids are automatically padded from 3872 to 4096 to be a multiple of `config.attention_window`: 1024
+  6% 133/2193 [03:37<58:36,  1.71s/it]  Input ids are automatically padded from 4671 to 5120 to be a multiple of `config.attention_window`: 1024
+  6% 136/2193 [03:43<1:02:18,  1.82s/it]Input ids are automatically padded from 354 to 1024 to be a multiple of `config.attention_window`: 1024
+  6% 137/2193 [03:43<47:58,  1.40s/it]  Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+  6% 138/2193 [03:43<38:21,  1.12s/it]Input ids are automatically padded from 4229 to 5120 to be a multiple of `config.attention_window`: 1024
+  6% 140/2193 [03:47<50:56,  1.49s/it]Input ids are automatically padded from 2151 to 3072 to be a multiple of `config.attention_window`: 1024
+  7% 144/2193 [03:54<57:57,  1.70s/it]Input ids are automatically padded from 366 to 1024 to be a multiple of `config.attention_window`: 1024
+  7% 146/2193 [03:56<50:54,  1.49s/it]Input ids are automatically padded from 1152 to 2048 to be a multiple of `config.attention_window`: 1024
+  7% 147/2193 [03:57<44:05,  1.29s/it]Input ids are automatically padded from 2980 to 3072 to be a multiple of `config.attention_window`: 1024
+  7% 148/2193 [03:58<42:41,  1.25s/it]Input ids are automatically padded from 5072 to 5120 to be a multiple of `config.attention_window`: 1024
+  7% 150/2193 [04:02<53:05,  1.56s/it]Input ids are automatically padded from 1077 to 2048 to be a multiple of `config.attention_window`: 1024
+  7% 151/2193 [04:03<45:07,  1.33s/it]Input ids are automatically padded from 4810 to 5120 to be a multiple of `config.attention_window`: 1024
+  7% 153/2193 [04:06<54:26,  1.60s/it]Input ids are automatically padded from 4747 to 5120 to be a multiple of `config.attention_window`: 1024
+  7% 156/2193 [04:12<1:00:40,  1.79s/it]Input ids are automatically padded from 3500 to 4096 to be a multiple of `config.attention_window`: 1024
+  7% 158/2193 [04:15<58:37,  1.73s/it]Input ids are automatically padded from 362 to 1024 to be a multiple of `config.attention_window`: 1024
+  7% 162/2193 [04:21<57:06,  1.69s/it]Input ids are automatically padded from 3473 to 4096 to be a multiple of `config.attention_window`: 1024
+  7% 163/2193 [04:23<54:53,  1.62s/it]Input ids are automatically padded from 3549 to 4096 to be a multiple of `config.attention_window`: 1024
+  7% 164/2193 [04:24<53:27,  1.58s/it]Input ids are automatically padded from 4846 to 5120 to be a multiple of `config.attention_window`: 1024
+  8% 167/2193 [04:30<1:00:04,  1.78s/it]Input ids are automatically padded from 3106 to 4096 to be a multiple of `config.attention_window`: 1024
+  8% 169/2193 [04:33<58:49,  1.74s/it]Input ids are automatically padded from 4643 to 5120 to be a multiple of `config.attention_window`: 1024
+  8% 170/2193 [04:35<59:59,  1.78s/it]Input ids are automatically padded from 3889 to 4096 to be a multiple of `config.attention_window`: 1024
+  8% 171/2193 [04:37<56:59,  1.69s/it]Input ids are automatically padded from 842 to 1024 to be a multiple of `config.attention_window`: 1024
+  8% 177/2193 [04:46<59:02,  1.76s/it]Input ids are automatically padded from 4063 to 4096 to be a multiple of `config.attention_window`: 1024
+  8% 179/2193 [04:50<58:43,  1.75s/it]Input ids are automatically padded from 2214 to 3072 to be a multiple of `config.attention_window`: 1024
+  8% 186/2193 [05:02<1:01:31,  1.84s/it]Input ids are automatically padded from 5008 to 5120 to be a multiple of `config.attention_window`: 1024
+  9% 190/2193 [05:10<1:02:40,  1.88s/it]Input ids are automatically padded from 3324 to 4096 to be a multiple of `config.attention_window`: 1024
+  9% 192/2193 [05:13<59:54,  1.80s/it]Input ids are automatically padded from 2625 to 3072 to be a multiple of `config.attention_window`: 1024
+  9% 194/2193 [05:16<56:12,  1.69s/it]Input ids are automatically padded from 3563 to 4096 to be a multiple of `config.attention_window`: 1024
+  9% 204/2193 [05:35<1:02:00,  1.87s/it]Input ids are automatically padded from 3763 to 4096 to be a multiple of `config.attention_window`: 1024
+  9% 207/2193 [05:40<59:53,  1.81s/it]Input ids are automatically padded from 1645 to 2048 to be a multiple of `config.attention_window`: 1024
+  9% 208/2193 [05:41<50:02,  1.51s/it]Input ids are automatically padded from 4140 to 5120 to be a multiple of `config.attention_window`: 1024
+ 10% 210/2193 [05:44<55:29,  1.68s/it]Input ids are automatically padded from 3350 to 4096 to be a multiple of `config.attention_window`: 1024
+ 10% 214/2193 [05:51<59:25,  1.80s/it]Input ids are automatically padded from 4438 to 5120 to be a multiple of `config.attention_window`: 1024
+ 10% 219/2193 [06:01<1:00:34,  1.84s/it]Input ids are automatically padded from 478 to 1024 to be a multiple of `config.attention_window`: 1024
+ 10% 222/2193 [06:05<54:36,  1.66s/it]Input ids are automatically padded from 3123 to 4096 to be a multiple of `config.attention_window`: 1024
+ 10% 225/2193 [06:10<57:25,  1.75s/it]Input ids are automatically padded from 940 to 1024 to be a multiple of `config.attention_window`: 1024
+ 10% 229/2193 [06:16<55:29,  1.70s/it]Input ids are automatically padded from 374 to 1024 to be a multiple of `config.attention_window`: 1024
+ 11% 232/2193 [06:20<51:28,  1.57s/it]Input ids are automatically padded from 4562 to 5120 to be a multiple of `config.attention_window`: 1024
+ 11% 234/2193 [06:24<55:59,  1.71s/it]Input ids are automatically padded from 4841 to 5120 to be a multiple of `config.attention_window`: 1024
+ 11% 236/2193 [06:28<58:52,  1.81s/it]Input ids are automatically padded from 2876 to 3072 to be a multiple of `config.attention_window`: 1024
+ 11% 239/2193 [06:33<57:01,  1.75s/it]Input ids are automatically padded from 4810 to 5120 to be a multiple of `config.attention_window`: 1024
+ 11% 240/2193 [06:35<57:51,  1.78s/it]Input ids are automatically padded from 3652 to 4096 to be a multiple of `config.attention_window`: 1024
+ 11% 247/2193 [06:47<1:00:17,  1.86s/it]Input ids are automatically padded from 945 to 1024 to be a multiple of `config.attention_window`: 1024
+ 11% 248/2193 [06:48<46:33,  1.44s/it]  Input ids are automatically padded from 3744 to 4096 to be a multiple of `config.attention_window`: 1024
+ 11% 249/2193 [06:49<47:11,  1.46s/it]Input ids are automatically padded from 3920 to 4096 to be a multiple of `config.attention_window`: 1024
+ 12% 253/2193 [06:56<56:10,  1.74s/it]Input ids are automatically padded from 3006 to 3072 to be a multiple of `config.attention_window`: 1024
+ 12% 256/2193 [07:01<55:46,  1.73s/it]Input ids are automatically padded from 4200 to 5120 to be a multiple of `config.attention_window`: 1024
+ 12% 259/2193 [07:07<58:37,  1.82s/it]Input ids are automatically padded from 758 to 1024 to be a multiple of `config.attention_window`: 1024
+ 12% 263/2193 [07:13<54:47,  1.70s/it]Input ids are automatically padded from 3431 to 4096 to be a multiple of `config.attention_window`: 1024
+ 12% 264/2193 [07:14<53:02,  1.65s/it]Input ids are automatically padded from 4835 to 5120 to be a multiple of `config.attention_window`: 1024
+ 12% 265/2193 [07:16<55:25,  1.73s/it]Input ids are automatically padded from 875 to 1024 to be a multiple of `config.attention_window`: 1024
+ 12% 268/2193 [07:21<52:25,  1.63s/it]Input ids are automatically padded from 3631 to 4096 to be a multiple of `config.attention_window`: 1024
+ 12% 273/2193 [07:30<57:28,  1.80s/it]Input ids are automatically padded from 839 to 1024 to be a multiple of `config.attention_window`: 1024
+ 13% 275/2193 [07:32<49:24,  1.55s/it]Input ids are automatically padded from 3823 to 4096 to be a multiple of `config.attention_window`: 1024
+ 13% 278/2193 [07:37<54:39,  1.71s/it]Input ids are automatically padded from 4841 to 5120 to be a multiple of `config.attention_window`: 1024
+ 13% 279/2193 [07:39<56:04,  1.76s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 13% 280/2193 [07:39<43:39,  1.37s/it]Input ids are automatically padded from 3144 to 4096 to be a multiple of `config.attention_window`: 1024
+ 13% 281/2193 [07:41<44:21,  1.39s/it]Input ids are automatically padded from 610 to 1024 to be a multiple of `config.attention_window`: 1024
+ 13% 282/2193 [07:41<35:42,  1.12s/it]Input ids are automatically padded from 3601 to 4096 to be a multiple of `config.attention_window`: 1024
+ 13% 283/2193 [07:43<38:53,  1.22s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 13% 286/2193 [07:47<46:00,  1.45s/it]Input ids are automatically padded from 1900 to 2048 to be a multiple of `config.attention_window`: 1024
+ 13% 287/2193 [07:48<40:08,  1.26s/it]Input ids are automatically padded from 4291 to 5120 to be a multiple of `config.attention_window`: 1024
+ 13% 294/2193 [08:01<58:02,  1.83s/it]Input ids are automatically padded from 4958 to 5120 to be a multiple of `config.attention_window`: 1024
+ 13% 296/2193 [08:05<58:10,  1.84s/it]Input ids are automatically padded from 1757 to 2048 to be a multiple of `config.attention_window`: 1024
+ 14% 302/2193 [08:15<56:38,  1.80s/it]Input ids are automatically padded from 662 to 1024 to be a multiple of `config.attention_window`: 1024
+ 14% 303/2193 [08:15<44:00,  1.40s/it]Input ids are automatically padded from 3966 to 4096 to be a multiple of `config.attention_window`: 1024
+ 14% 304/2193 [08:17<44:32,  1.42s/it]Input ids are automatically padded from 4415 to 5120 to be a multiple of `config.attention_window`: 1024
+ 14% 305/2193 [08:19<48:24,  1.54s/it]Input ids are automatically padded from 1038 to 2048 to be a multiple of `config.attention_window`: 1024
+ 14% 307/2193 [08:21<46:09,  1.47s/it]Input ids are automatically padded from 2922 to 3072 to be a multiple of `config.attention_window`: 1024
+ 14% 308/2193 [08:22<43:10,  1.37s/it]Input ids are automatically padded from 729 to 1024 to be a multiple of `config.attention_window`: 1024
+ 14% 315/2193 [08:34<56:03,  1.79s/it]Input ids are automatically padded from 4806 to 5120 to be a multiple of `config.attention_window`: 1024
+ 14% 316/2193 [08:36<57:00,  1.82s/it]Input ids are automatically padded from 4232 to 5120 to be a multiple of `config.attention_window`: 1024
+ 14% 317/2193 [08:38<56:59,  1.82s/it]Input ids are automatically padded from 2270 to 3072 to be a multiple of `config.attention_window`: 1024
+ 15% 318/2193 [08:39<50:47,  1.63s/it]Input ids are automatically padded from 779 to 1024 to be a multiple of `config.attention_window`: 1024
+ 15% 320/2193 [08:41<45:40,  1.46s/it]Input ids are automatically padded from 3181 to 4096 to be a multiple of `config.attention_window`: 1024
+ 15% 323/2193 [08:47<52:35,  1.69s/it]Input ids are automatically padded from 3752 to 4096 to be a multiple of `config.attention_window`: 1024
+ 15% 324/2193 [08:48<51:01,  1.64s/it]Input ids are automatically padded from 4123 to 5120 to be a multiple of `config.attention_window`: 1024
+ 15% 325/2193 [08:50<52:19,  1.68s/it]Input ids are automatically padded from 1747 to 2048 to be a multiple of `config.attention_window`: 1024
+ 15% 331/2193 [09:00<55:34,  1.79s/it]Input ids are automatically padded from 3790 to 4096 to be a multiple of `config.attention_window`: 1024
+ 15% 333/2193 [09:03<54:20,  1.75s/it]Input ids are automatically padded from 994 to 1024 to be a multiple of `config.attention_window`: 1024
+ 15% 337/2193 [09:10<52:12,  1.69s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 15% 339/2193 [09:12<45:36,  1.48s/it]Input ids are automatically padded from 2238 to 3072 to be a multiple of `config.attention_window`: 1024
+ 16% 341/2193 [09:15<47:33,  1.54s/it]Input ids are automatically padded from 2151 to 3072 to be a multiple of `config.attention_window`: 1024
+ 16% 343/2193 [09:18<48:14,  1.56s/it]Input ids are automatically padded from 1180 to 2048 to be a multiple of `config.attention_window`: 1024
+ 16% 347/2193 [09:24<52:28,  1.71s/it]Input ids are automatically padded from 3201 to 4096 to be a multiple of `config.attention_window`: 1024
+ 16% 348/2193 [09:26<50:14,  1.63s/it]Input ids are automatically padded from 4535 to 5120 to be a multiple of `config.attention_window`: 1024
+ 16% 349/2193 [09:28<52:10,  1.70s/it]Input ids are automatically padded from 422 to 1024 to be a multiple of `config.attention_window`: 1024
+ 16% 350/2193 [09:28<40:52,  1.33s/it]Input ids are automatically padded from 2057 to 3072 to be a multiple of `config.attention_window`: 1024
+ 16% 353/2193 [09:33<48:46,  1.59s/it]Input ids are automatically padded from 4909 to 5120 to be a multiple of `config.attention_window`: 1024
+ 16% 357/2193 [09:41<55:11,  1.80s/it]Input ids are automatically padded from 562 to 1024 to be a multiple of `config.attention_window`: 1024
+ 17% 365/2193 [09:54<55:26,  1.82s/it]Input ids are automatically padded from 3881 to 4096 to be a multiple of `config.attention_window`: 1024
+ 17% 372/2193 [10:07<57:04,  1.88s/it]Input ids are automatically padded from 4063 to 4096 to be a multiple of `config.attention_window`: 1024
+ 17% 376/2193 [10:14<55:24,  1.83s/it]Input ids are automatically padded from 4785 to 5120 to be a multiple of `config.attention_window`: 1024
+ 17% 378/2193 [10:18<56:25,  1.87s/it]Input ids are automatically padded from 611 to 1024 to be a multiple of `config.attention_window`: 1024
+ 17% 379/2193 [10:18<43:55,  1.45s/it]Input ids are automatically padded from 1346 to 2048 to be a multiple of `config.attention_window`: 1024
+ 17% 381/2193 [10:21<43:47,  1.45s/it]Input ids are automatically padded from 3221 to 4096 to be a multiple of `config.attention_window`: 1024
+ 17% 383/2193 [10:24<47:50,  1.59s/it]Input ids are automatically padded from 2358 to 3072 to be a multiple of `config.attention_window`: 1024
+ 18% 385/2193 [10:27<46:45,  1.55s/it]Input ids are automatically padded from 1284 to 2048 to be a multiple of `config.attention_window`: 1024
+ 18% 386/2193 [10:28<39:51,  1.32s/it]Input ids are automatically padded from 4839 to 5120 to be a multiple of `config.attention_window`: 1024
+ 18% 388/2193 [10:32<48:27,  1.61s/it]Input ids are automatically padded from 398 to 1024 to be a multiple of `config.attention_window`: 1024
+ 18% 390/2193 [10:34<43:21,  1.44s/it]Input ids are automatically padded from 673 to 1024 to be a multiple of `config.attention_window`: 1024
+ 18% 392/2193 [10:37<40:56,  1.36s/it]Input ids are automatically padded from 3500 to 4096 to be a multiple of `config.attention_window`: 1024
+ 18% 393/2193 [10:38<41:59,  1.40s/it]Input ids are automatically padded from 467 to 1024 to be a multiple of `config.attention_window`: 1024
+ 18% 395/2193 [10:40<39:44,  1.33s/it]Input ids are automatically padded from 426 to 1024 to be a multiple of `config.attention_window`: 1024
+ 18% 396/2193 [10:41<31:40,  1.06s/it]Input ids are automatically padded from 1191 to 2048 to be a multiple of `config.attention_window`: 1024
+ 18% 397/2193 [10:42<29:20,  1.02it/s]Input ids are automatically padded from 3403 to 4096 to be a multiple of `config.attention_window`: 1024
+ 18% 398/2193 [10:43<33:32,  1.12s/it]Input ids are automatically padded from 3702 to 4096 to be a multiple of `config.attention_window`: 1024
+ 18% 399/2193 [10:44<36:45,  1.23s/it]Input ids are automatically padded from 3617 to 4096 to be a multiple of `config.attention_window`: 1024
+ 18% 403/2193 [10:52<50:01,  1.68s/it]Input ids are automatically padded from 3039 to 3072 to be a multiple of `config.attention_window`: 1024
+ 19% 407/2193 [10:58<52:21,  1.76s/it]Input ids are automatically padded from 1118 to 2048 to be a multiple of `config.attention_window`: 1024
+ 19% 411/2193 [11:05<51:45,  1.74s/it]Input ids are automatically padded from 4438 to 5120 to be a multiple of `config.attention_window`: 1024
+ 19% 412/2193 [11:07<52:58,  1.78s/it]Input ids are automatically padded from 2185 to 3072 to be a multiple of `config.attention_window`: 1024
+ 19% 413/2193 [11:08<47:23,  1.60s/it]Input ids are automatically padded from 418 to 1024 to be a multiple of `config.attention_window`: 1024
+ 19% 414/2193 [11:08<37:09,  1.25s/it]Input ids are automatically padded from 1747 to 2048 to be a multiple of `config.attention_window`: 1024
+ 19% 417/2193 [11:13<44:37,  1.51s/it]Input ids are automatically padded from 3601 to 4096 to be a multiple of `config.attention_window`: 1024
+ 19% 419/2193 [11:16<47:49,  1.62s/it]Input ids are automatically padded from 4196 to 5120 to be a multiple of `config.attention_window`: 1024
+ 19% 420/2193 [11:18<49:58,  1.69s/it]Input ids are automatically padded from 1486 to 2048 to be a multiple of `config.attention_window`: 1024
+ 19% 422/2193 [11:21<46:02,  1.56s/it]Input ids are automatically padded from 3744 to 4096 to be a multiple of `config.attention_window`: 1024
+ 19% 423/2193 [11:22<45:30,  1.54s/it]Input ids are automatically padded from 511 to 1024 to be a multiple of `config.attention_window`: 1024
+ 20% 428/2193 [11:30<50:36,  1.72s/it]Input ids are automatically padded from 3840 to 4096 to be a multiple of `config.attention_window`: 1024
+ 20% 435/2193 [11:43<54:34,  1.86s/it]Input ids are automatically padded from 4726 to 5120 to be a multiple of `config.attention_window`: 1024
+ 20% 436/2193 [11:45<54:37,  1.87s/it]Input ids are automatically padded from 2565 to 3072 to be a multiple of `config.attention_window`: 1024
+ 20% 443/2193 [11:57<54:24,  1.87s/it]Input ids are automatically padded from 4883 to 5120 to be a multiple of `config.attention_window`: 1024
+ 20% 444/2193 [11:59<54:39,  1.88s/it]Input ids are automatically padded from 2741 to 3072 to be a multiple of `config.attention_window`: 1024
+ 20% 445/2193 [12:00<48:34,  1.67s/it]Input ids are automatically padded from 1861 to 2048 to be a multiple of `config.attention_window`: 1024
+ 20% 447/2193 [12:03<45:26,  1.56s/it]Input ids are automatically padded from 4041 to 4096 to be a multiple of `config.attention_window`: 1024
+ 20% 448/2193 [12:05<44:22,  1.53s/it]Input ids are automatically padded from 684 to 1024 to be a multiple of `config.attention_window`: 1024
+ 20% 449/2193 [12:05<35:19,  1.22s/it]Input ids are automatically padded from 1512 to 2048 to be a multiple of `config.attention_window`: 1024
+ 21% 452/2193 [12:10<43:15,  1.49s/it]Input ids are automatically padded from 4709 to 5120 to be a multiple of `config.attention_window`: 1024
+ 21% 453/2193 [12:12<46:38,  1.61s/it]Input ids are automatically padded from 1570 to 2048 to be a multiple of `config.attention_window`: 1024
+ 21% 458/2193 [12:20<50:35,  1.75s/it]Input ids are automatically padded from 2659 to 3072 to be a multiple of `config.attention_window`: 1024
+ 21% 460/2193 [12:23<48:11,  1.67s/it]Input ids are automatically padded from 1270 to 2048 to be a multiple of `config.attention_window`: 1024
+ 21% 461/2193 [12:24<40:26,  1.40s/it]Input ids are automatically padded from 4347 to 5120 to be a multiple of `config.attention_window`: 1024
+ 21% 464/2193 [12:29<48:42,  1.69s/it]Input ids are automatically padded from 4643 to 5120 to be a multiple of `config.attention_window`: 1024
+ 21% 471/2193 [12:42<52:58,  1.85s/it]Input ids are automatically padded from 170 to 1024 to be a multiple of `config.attention_window`: 1024
+ 22% 472/2193 [12:43<40:34,  1.41s/it]Input ids are automatically padded from 5064 to 5120 to be a multiple of `config.attention_window`: 1024
+ 22% 475/2193 [12:48<48:59,  1.71s/it]Input ids are automatically padded from 3594 to 4096 to be a multiple of `config.attention_window`: 1024
+ 22% 476/2193 [12:50<47:11,  1.65s/it]Input ids are automatically padded from 5113 to 5120 to be a multiple of `config.attention_window`: 1024
+ 22% 479/2193 [12:55<51:38,  1.81s/it]Input ids are automatically padded from 3466 to 4096 to be a multiple of `config.attention_window`: 1024
+ 22% 480/2193 [12:57<48:52,  1.71s/it]Input ids are automatically padded from 3827 to 4096 to be a multiple of `config.attention_window`: 1024
+ 22% 482/2193 [13:00<48:46,  1.71s/it]Input ids are automatically padded from 4215 to 5120 to be a multiple of `config.attention_window`: 1024
+ 22% 483/2193 [13:02<50:00,  1.75s/it]Input ids are automatically padded from 4615 to 5120 to be a multiple of `config.attention_window`: 1024
+ 22% 492/2193 [13:19<53:26,  1.89s/it]Input ids are automatically padded from 520 to 1024 to be a multiple of `config.attention_window`: 1024
+ 22% 493/2193 [13:20<41:19,  1.46s/it]Input ids are automatically padded from 835 to 1024 to be a multiple of `config.attention_window`: 1024
+ 23% 495/2193 [13:22<39:21,  1.39s/it]Input ids are automatically padded from 2270 to 3072 to be a multiple of `config.attention_window`: 1024
+{'loss': 1.9422, 'learning_rate': 3.860009119927041e-05, 'epoch': 0.68}
+ 23% 500/2193 [13:31<48:38,  1.72s/it]Saving model checkpoint to /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/checkpoint-500
+Configuration saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/checkpoint-500/config.json
+Model weights saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/checkpoint-500/pytorch_model.bin
+ 23% 503/2193 [13:48<1:41:07,  3.59s/it]Input ids are automatically padded from 415 to 1024 to be a multiple of `config.attention_window`: 1024
+ 23% 505/2193 [13:51<1:08:30,  2.44s/it]Input ids are automatically padded from 338 to 1024 to be a multiple of `config.attention_window`: 1024
+ 23% 510/2193 [13:59<53:17,  1.90s/it]Input ids are automatically padded from 6 to 1024 to be a multiple of `config.attention_window`: 1024
+ 23% 514/2193 [14:05<49:04,  1.75s/it]Input ids are automatically padded from 534 to 1024 to be a multiple of `config.attention_window`: 1024
+ 23% 515/2193 [14:05<38:27,  1.38s/it]Input ids are automatically padded from 1332 to 2048 to be a multiple of `config.attention_window`: 1024
+ 24% 516/2193 [14:06<33:52,  1.21s/it]Input ids are automatically padded from 2358 to 3072 to be a multiple of `config.attention_window`: 1024
+ 24% 519/2193 [14:11<42:34,  1.53s/it]Input ids are automatically padded from 512 to 1024 to be a multiple of `config.attention_window`: 1024
+ 24% 525/2193 [14:21<49:01,  1.76s/it]Input ids are automatically padded from 3121 to 4096 to be a multiple of `config.attention_window`: 1024
+ 24% 529/2193 [14:28<49:55,  1.80s/it]Input ids are automatically padded from 5096 to 5120 to be a multiple of `config.attention_window`: 1024
+ 24% 530/2193 [14:30<50:30,  1.82s/it]Input ids are automatically padded from 4478 to 5120 to be a multiple of `config.attention_window`: 1024
+ 24% 533/2193 [14:35<51:19,  1.86s/it]Input ids are automatically padded from 747 to 1024 to be a multiple of `config.attention_window`: 1024
+ 24% 537/2193 [14:42<48:02,  1.74s/it]Input ids are automatically padded from 4123 to 5120 to be a multiple of `config.attention_window`: 1024
+ 25% 549/2193 [15:04<51:55,  1.89s/it]Input ids are automatically padded from 5001 to 5120 to be a multiple of `config.attention_window`: 1024
+ 25% 552/2193 [15:10<51:12,  1.87s/it]Input ids are automatically padded from 1634 to 2048 to be a multiple of `config.attention_window`: 1024
+ 25% 555/2193 [15:14<47:22,  1.74s/it]Input ids are automatically padded from 3469 to 4096 to be a multiple of `config.attention_window`: 1024
+ 25% 556/2193 [15:16<45:23,  1.66s/it]Input ids are automatically padded from 725 to 1024 to be a multiple of `config.attention_window`: 1024
+ 25% 558/2193 [15:18<39:57,  1.47s/it]Input ids are automatically padded from 3681 to 4096 to be a multiple of `config.attention_window`: 1024
+ 25% 559/2193 [15:20<39:54,  1.47s/it]Input ids are automatically padded from 4050 to 4096 to be a multiple of `config.attention_window`: 1024
+ 26% 561/2193 [15:23<43:58,  1.62s/it]Input ids are automatically padded from 4118 to 5120 to be a multiple of `config.attention_window`: 1024
+ 26% 563/2193 [15:27<46:54,  1.73s/it]Input ids are automatically padded from 4748 to 5120 to be a multiple of `config.attention_window`: 1024
+ 26% 564/2193 [15:29<47:54,  1.76s/it]Input ids are automatically padded from 1260 to 2048 to be a multiple of `config.attention_window`: 1024
+ 26% 565/2193 [15:29<39:51,  1.47s/it]Input ids are automatically padded from 4783 to 5120 to be a multiple of `config.attention_window`: 1024
+ 26% 572/2193 [15:43<49:51,  1.85s/it]Input ids are automatically padded from 4817 to 5120 to be a multiple of `config.attention_window`: 1024
+ 26% 575/2193 [15:48<50:38,  1.88s/it]Input ids are automatically padded from 3868 to 4096 to be a multiple of `config.attention_window`: 1024
+ 26% 578/2193 [15:54<49:09,  1.83s/it]Input ids are automatically padded from 3529 to 4096 to be a multiple of `config.attention_window`: 1024
+ 26% 581/2193 [15:59<48:29,  1.81s/it]Input ids are automatically padded from 3767 to 4096 to be a multiple of `config.attention_window`: 1024
+ 27% 585/2193 [16:06<48:29,  1.81s/it]Input ids are automatically padded from 3638 to 4096 to be a multiple of `config.attention_window`: 1024
+ 27% 586/2193 [16:07<45:53,  1.71s/it]Input ids are automatically padded from 3360 to 4096 to be a multiple of `config.attention_window`: 1024
+ 27% 593/2193 [16:20<49:35,  1.86s/it]Input ids are automatically padded from 4388 to 5120 to be a multiple of `config.attention_window`: 1024
+ 27% 600/2193 [16:33<49:11,  1.85s/it]Input ids are automatically padded from 398 to 1024 to be a multiple of `config.attention_window`: 1024
+ 27% 602/2193 [16:35<41:36,  1.57s/it]Input ids are automatically padded from 1038 to 2048 to be a multiple of `config.attention_window`: 1024
+ 27% 603/2193 [16:36<35:13,  1.33s/it]Input ids are automatically padded from 3606 to 4096 to be a multiple of `config.attention_window`: 1024
+ 28% 607/2193 [16:43<44:41,  1.69s/it]Input ids are automatically padded from 3680 to 4096 to be a multiple of `config.attention_window`: 1024
+ 28% 609/2193 [16:47<45:16,  1.71s/it]Input ids are automatically padded from 3359 to 4096 to be a multiple of `config.attention_window`: 1024
+ 28% 612/2193 [16:52<46:32,  1.77s/it]Input ids are automatically padded from 3519 to 4096 to be a multiple of `config.attention_window`: 1024
+ 28% 613/2193 [16:53<43:58,  1.67s/it]Input ids are automatically padded from 4545 to 5120 to be a multiple of `config.attention_window`: 1024
+ 28% 616/2193 [16:59<47:07,  1.79s/it]Input ids are automatically padded from 3771 to 4096 to be a multiple of `config.attention_window`: 1024
+ 28% 618/2193 [17:02<45:58,  1.75s/it]Input ids are automatically padded from 3790 to 4096 to be a multiple of `config.attention_window`: 1024
+ 28% 620/2193 [17:06<45:12,  1.72s/it]Input ids are automatically padded from 4750 to 5120 to be a multiple of `config.attention_window`: 1024
+ 28% 622/2193 [17:09<47:31,  1.82s/it]Input ids are automatically padded from 3184 to 4096 to be a multiple of `config.attention_window`: 1024
+ 28% 625/2193 [17:15<46:31,  1.78s/it]Input ids are automatically padded from 4147 to 5120 to be a multiple of `config.attention_window`: 1024
+ 29% 628/2193 [17:20<47:38,  1.83s/it]Input ids are automatically padded from 226 to 1024 to be a multiple of `config.attention_window`: 1024
+ 29% 631/2193 [17:24<43:04,  1.65s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 29% 638/2193 [17:36<46:54,  1.81s/it]Input ids are automatically padded from 4918 to 5120 to be a multiple of `config.attention_window`: 1024
+ 29% 639/2193 [17:38<47:35,  1.84s/it]Input ids are automatically padded from 3883 to 4096 to be a multiple of `config.attention_window`: 1024
+ 29% 643/2193 [17:45<47:33,  1.84s/it]Input ids are automatically padded from 1889 to 2048 to be a multiple of `config.attention_window`: 1024
+ 29% 646/2193 [17:50<43:35,  1.69s/it]Input ids are automatically padded from 450 to 1024 to be a multiple of `config.attention_window`: 1024
+ 30% 647/2193 [17:50<33:57,  1.32s/it]Input ids are automatically padded from 562 to 1024 to be a multiple of `config.attention_window`: 1024
+ 30% 648/2193 [17:51<27:21,  1.06s/it]Input ids are automatically padded from 266 to 1024 to be a multiple of `config.attention_window`: 1024
+ 30% 649/2193 [17:51<22:36,  1.14it/s]Input ids are automatically padded from 4550 to 5120 to be a multiple of `config.attention_window`: 1024
+ 30% 650/2193 [17:53<30:01,  1.17s/it]Input ids are automatically padded from 4135 to 5120 to be a multiple of `config.attention_window`: 1024
+ 30% 651/2193 [17:55<35:20,  1.38s/it]Input ids are automatically padded from 4006 to 4096 to be a multiple of `config.attention_window`: 1024
+ 30% 652/2193 [17:56<36:06,  1.41s/it]Input ids are automatically padded from 3702 to 4096 to be a multiple of `config.attention_window`: 1024
+ 30% 653/2193 [17:58<36:39,  1.43s/it]Input ids are automatically padded from 695 to 1024 to be a multiple of `config.attention_window`: 1024
+ 30% 654/2193 [17:58<29:30,  1.15s/it]Input ids are automatically padded from 2701 to 3072 to be a multiple of `config.attention_window`: 1024
+ 30% 655/2193 [17:59<29:50,  1.16s/it]Input ids are automatically padded from 1068 to 2048 to be a multiple of `config.attention_window`: 1024
+ 30% 660/2193 [18:08<43:30,  1.70s/it]Input ids are automatically padded from 590 to 1024 to be a multiple of `config.attention_window`: 1024
+ 30% 665/2193 [18:16<44:27,  1.75s/it]Input ids are automatically padded from 3007 to 3072 to be a multiple of `config.attention_window`: 1024
+ 30% 667/2193 [18:19<42:25,  1.67s/it]Input ids are automatically padded from 4337 to 5120 to be a multiple of `config.attention_window`: 1024
+ 30% 668/2193 [18:21<43:54,  1.73s/it]Input ids are automatically padded from 2373 to 3072 to be a multiple of `config.attention_window`: 1024
+ 31% 670/2193 [18:24<41:35,  1.64s/it]Input ids are automatically padded from 4173 to 5120 to be a multiple of `config.attention_window`: 1024
+ 31% 675/2193 [18:33<45:55,  1.82s/it]Input ids are automatically padded from 4173 to 5120 to be a multiple of `config.attention_window`: 1024
+ 31% 678/2193 [18:39<46:24,  1.84s/it]Input ids are automatically padded from 2222 to 3072 to be a multiple of `config.attention_window`: 1024
+ 31% 681/2193 [18:43<43:50,  1.74s/it]Input ids are automatically padded from 4476 to 5120 to be a multiple of `config.attention_window`: 1024
+ 31% 683/2193 [18:47<45:25,  1.81s/it]Input ids are automatically padded from 813 to 1024 to be a multiple of `config.attention_window`: 1024
+ 31% 685/2193 [18:50<39:03,  1.55s/it]Input ids are automatically padded from 2900 to 3072 to be a multiple of `config.attention_window`: 1024
+ 31% 690/2193 [18:58<44:45,  1.79s/it]Input ids are automatically padded from 3144 to 4096 to be a multiple of `config.attention_window`: 1024
+ 32% 692/2193 [19:02<43:39,  1.75s/it]Input ids are automatically padded from 4919 to 5120 to be a multiple of `config.attention_window`: 1024
+ 32% 696/2193 [19:09<46:09,  1.85s/it]Input ids are automatically padded from 982 to 1024 to be a multiple of `config.attention_window`: 1024
+ 32% 700/2193 [19:15<42:58,  1.73s/it]Input ids are automatically padded from 4638 to 5120 to be a multiple of `config.attention_window`: 1024
+ 32% 701/2193 [19:17<43:38,  1.75s/it]Input ids are automatically padded from 4232 to 5120 to be a multiple of `config.attention_window`: 1024
+ 32% 703/2193 [19:21<45:04,  1.82s/it]Input ids are automatically padded from 4419 to 5120 to be a multiple of `config.attention_window`: 1024
+ 32% 705/2193 [19:25<45:43,  1.84s/it]Input ids are automatically padded from 3360 to 4096 to be a multiple of `config.attention_window`: 1024
+ 32% 707/2193 [19:28<43:32,  1.76s/it]Input ids are automatically padded from 4215 to 5120 to be a multiple of `config.attention_window`: 1024
+ 33% 718/2193 [19:49<46:20,  1.89s/it]Input ids are automatically padded from 1889 to 2048 to be a multiple of `config.attention_window`: 1024
+ 33% 721/2193 [19:53<41:40,  1.70s/it]Input ids are automatically padded from 4538 to 5120 to be a multiple of `config.attention_window`: 1024
+ 33% 724/2193 [19:59<44:46,  1.83s/it]Input ids are automatically padded from 3472 to 4096 to be a multiple of `config.attention_window`: 1024
+ 33% 731/2193 [20:11<45:22,  1.86s/it]Input ids are automatically padded from 366 to 1024 to be a multiple of `config.attention_window`: 1024
+ 33% 732/2193 [20:12<35:04,  1.44s/it]Input ids are automatically padded from 3221 to 4096 to be a multiple of `config.attention_window`: 1024
+ 34% 738/2193 [20:23<44:07,  1.82s/it]Input ids are automatically padded from 4135 to 5120 to be a multiple of `config.attention_window`: 1024
+ 34% 740/2193 [20:27<44:59,  1.86s/it]Input ids are automatically padded from 4147 to 5120 to be a multiple of `config.attention_window`: 1024
+ 34% 747/2193 [20:40<45:30,  1.89s/it]Input ids are automatically padded from 689 to 1024 to be a multiple of `config.attention_window`: 1024
+ 34% 752/2193 [20:48<42:19,  1.76s/it]Input ids are automatically padded from 1038 to 2048 to be a multiple of `config.attention_window`: 1024
+ 34% 753/2193 [20:48<35:02,  1.46s/it]Input ids are automatically padded from 3007 to 3072 to be a multiple of `config.attention_window`: 1024
+ 35% 757/2193 [20:55<39:47,  1.66s/it]Input ids are automatically padded from 3106 to 4096 to be a multiple of `config.attention_window`: 1024
+ 35% 759/2193 [20:58<40:05,  1.68s/it]Input ids are automatically padded from 3872 to 4096 to be a multiple of `config.attention_window`: 1024
+ 35% 760/2193 [21:00<38:24,  1.61s/it]Input ids are automatically padded from 4123 to 5120 to be a multiple of `config.attention_window`: 1024
+ 35% 763/2193 [21:05<42:21,  1.78s/it]Input ids are automatically padded from 4041 to 4096 to be a multiple of `config.attention_window`: 1024
+ 35% 764/2193 [21:07<40:04,  1.68s/it]Input ids are automatically padded from 4762 to 5120 to be a multiple of `config.attention_window`: 1024
+ 35% 765/2193 [21:09<41:22,  1.74s/it]Input ids are automatically padded from 724 to 1024 to be a multiple of `config.attention_window`: 1024
+ 35% 766/2193 [21:09<32:20,  1.36s/it]Input ids are automatically padded from 4478 to 5120 to be a multiple of `config.attention_window`: 1024
+ 36% 781/2193 [21:37<44:14,  1.88s/it]Input ids are automatically padded from 2238 to 3072 to be a multiple of `config.attention_window`: 1024
+ 36% 786/2193 [21:46<43:11,  1.84s/it]Input ids are automatically padded from 1180 to 2048 to be a multiple of `config.attention_window`: 1024
+ 36% 790/2193 [21:52<41:00,  1.75s/it]Input ids are automatically padded from 3360 to 4096 to be a multiple of `config.attention_window`: 1024
+ 36% 793/2193 [21:58<41:47,  1.79s/it]Input ids are automatically padded from 3638 to 4096 to be a multiple of `config.attention_window`: 1024
+ 36% 797/2193 [22:05<41:50,  1.80s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 36% 799/2193 [22:07<36:08,  1.56s/it]Input ids are automatically padded from 684 to 1024 to be a multiple of `config.attention_window`: 1024
+ 37% 801/2193 [22:10<33:17,  1.43s/it]Input ids are automatically padded from 1260 to 2048 to be a multiple of `config.attention_window`: 1024
+ 37% 809/2193 [22:24<42:12,  1.83s/it]Input ids are automatically padded from 4173 to 5120 to be a multiple of `config.attention_window`: 1024
+ 37% 813/2193 [22:31<42:44,  1.86s/it]Input ids are automatically padded from 747 to 1024 to be a multiple of `config.attention_window`: 1024
+ 37% 815/2193 [22:33<36:02,  1.57s/it]Input ids are automatically padded from 450 to 1024 to be a multiple of `config.attention_window`: 1024
+ 37% 818/2193 [22:38<35:42,  1.56s/it]Input ids are automatically padded from 4690 to 5120 to be a multiple of `config.attention_window`: 1024
+ 37% 820/2193 [22:41<39:16,  1.72s/it]Input ids are automatically padded from 1068 to 2048 to be a multiple of `config.attention_window`: 1024
+ 38% 823/2193 [22:46<38:04,  1.67s/it]Input ids are automatically padded from 4476 to 5120 to be a multiple of `config.attention_window`: 1024
+ 38% 825/2193 [22:50<40:30,  1.78s/it]Input ids are automatically padded from 3353 to 4096 to be a multiple of `config.attention_window`: 1024
+ 38% 827/2193 [22:53<40:08,  1.76s/it]Input ids are automatically padded from 4200 to 5120 to be a multiple of `config.attention_window`: 1024
+ 38% 829/2193 [22:57<41:02,  1.81s/it]Input ids are automatically padded from 2151 to 3072 to be a multiple of `config.attention_window`: 1024
+ 38% 830/2193 [22:58<36:40,  1.61s/it]Input ids are automatically padded from 3360 to 4096 to be a multiple of `config.attention_window`: 1024
+ 38% 832/2193 [23:01<38:01,  1.68s/it]Input ids are automatically padded from 4006 to 4096 to be a multiple of `config.attention_window`: 1024
+ 38% 835/2193 [23:06<39:35,  1.75s/it]Input ids are automatically padded from 1634 to 2048 to be a multiple of `config.attention_window`: 1024
+ 38% 836/2193 [23:07<33:20,  1.47s/it]Input ids are automatically padded from 1889 to 2048 to be a multiple of `config.attention_window`: 1024
+ 38% 841/2193 [23:16<39:08,  1.74s/it]Input ids are automatically padded from 4810 to 5120 to be a multiple of `config.attention_window`: 1024
+ 39% 846/2193 [23:25<41:45,  1.86s/it]Input ids are automatically padded from 3039 to 3072 to be a multiple of `config.attention_window`: 1024
+ 39% 847/2193 [23:26<36:56,  1.65s/it]Input ids are automatically padded from 3472 to 4096 to be a multiple of `config.attention_window`: 1024
+ 39% 848/2193 [23:28<35:44,  1.59s/it]Input ids are automatically padded from 4545 to 5120 to be a multiple of `config.attention_window`: 1024
+ 39% 854/2193 [23:39<41:23,  1.85s/it]Input ids are automatically padded from 3840 to 4096 to be a multiple of `config.attention_window`: 1024
+ 39% 857/2193 [23:44<40:07,  1.80s/it]Input ids are automatically padded from 452 to 1024 to be a multiple of `config.attention_window`: 1024
+ 39% 858/2193 [23:45<31:01,  1.39s/it]Input ids are automatically padded from 2099 to 3072 to be a multiple of `config.attention_window`: 1024
+ 39% 864/2193 [23:55<39:33,  1.79s/it]Input ids are automatically padded from 746 to 1024 to be a multiple of `config.attention_window`: 1024
+ 40% 867/2193 [23:59<36:19,  1.64s/it]Input ids are automatically padded from 3006 to 3072 to be a multiple of `config.attention_window`: 1024
+ 40% 868/2193 [24:00<32:55,  1.49s/it]Input ids are automatically padded from 662 to 1024 to be a multiple of `config.attention_window`: 1024
+ 40% 869/2193 [24:01<26:03,  1.18s/it]Input ids are automatically padded from 4634 to 5120 to be a multiple of `config.attention_window`: 1024
+ 40% 871/2193 [24:05<33:22,  1.51s/it]Input ids are automatically padded from 4643 to 5120 to be a multiple of `config.attention_window`: 1024
+ 40% 879/2193 [24:20<40:42,  1.86s/it]Input ids are automatically padded from 5107 to 5120 to be a multiple of `config.attention_window`: 1024
+ 40% 884/2193 [24:29<41:08,  1.89s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 40% 887/2193 [24:33<36:28,  1.68s/it]Input ids are automatically padded from 2625 to 3072 to be a multiple of `config.attention_window`: 1024
+ 41% 889/2193 [24:36<35:03,  1.61s/it]Input ids are automatically padded from 912 to 1024 to be a multiple of `config.attention_window`: 1024
+ 41% 895/2193 [24:46<38:30,  1.78s/it]Input ids are automatically padded from 3702 to 4096 to be a multiple of `config.attention_window`: 1024
+ 41% 897/2193 [24:49<38:01,  1.76s/it]Input ids are automatically padded from 3868 to 4096 to be a multiple of `config.attention_window`: 1024
+ 41% 904/2193 [25:02<39:59,  1.86s/it]Input ids are automatically padded from 398 to 1024 to be a multiple of `config.attention_window`: 1024
+ 41% 910/2193 [25:12<38:15,  1.79s/it]Input ids are automatically padded from 2222 to 3072 to be a multiple of `config.attention_window`: 1024
+ 42% 911/2193 [25:13<34:14,  1.60s/it]Input ids are automatically padded from 673 to 1024 to be a multiple of `config.attention_window`: 1024
+ 42% 913/2193 [25:15<30:56,  1.45s/it]Input ids are automatically padded from 3881 to 4096 to be a multiple of `config.attention_window`: 1024
+ 42% 916/2193 [25:21<35:35,  1.67s/it]Input ids are automatically padded from 512 to 1024 to be a multiple of `config.attention_window`: 1024
+ 42% 917/2193 [25:21<27:59,  1.32s/it]Input ids are automatically padded from 2876 to 3072 to be a multiple of `config.attention_window`: 1024
+ 42% 918/2193 [25:22<26:50,  1.26s/it]Input ids are automatically padded from 4196 to 5120 to be a multiple of `config.attention_window`: 1024
+ 42% 921/2193 [25:28<35:22,  1.67s/it]Input ids are automatically padded from 4229 to 5120 to be a multiple of `config.attention_window`: 1024
+ 42% 925/2193 [25:35<38:37,  1.83s/it]Input ids are automatically padded from 2659 to 3072 to be a multiple of `config.attention_window`: 1024
+ 42% 927/2193 [25:39<36:01,  1.71s/it]Input ids are automatically padded from 4419 to 5120 to be a multiple of `config.attention_window`: 1024
+ 42% 929/2193 [25:42<37:33,  1.78s/it]Input ids are automatically padded from 4835 to 5120 to be a multiple of `config.attention_window`: 1024
+ 43% 937/2193 [25:57<38:39,  1.85s/it]Input ids are automatically padded from 520 to 1024 to be a multiple of `config.attention_window`: 1024
+ 43% 938/2193 [25:58<29:57,  1.43s/it]Input ids are automatically padded from 415 to 1024 to be a multiple of `config.attention_window`: 1024
+ 43% 943/2193 [26:05<34:57,  1.68s/it]Input ids are automatically padded from 4643 to 5120 to be a multiple of `config.attention_window`: 1024
+ 43% 945/2193 [26:09<36:37,  1.76s/it]Input ids are automatically padded from 4337 to 5120 to be a multiple of `config.attention_window`: 1024
+ 43% 946/2193 [26:11<37:17,  1.79s/it]Input ids are automatically padded from 4106 to 5120 to be a multiple of `config.attention_window`: 1024
+ 43% 948/2193 [26:15<37:49,  1.82s/it]Input ids are automatically padded from 871 to 1024 to be a multiple of `config.attention_window`: 1024
+ 43% 949/2193 [26:15<29:14,  1.41s/it]Input ids are automatically padded from 5001 to 5120 to be a multiple of `config.attention_window`: 1024
+ 43% 950/2193 [26:17<32:01,  1.55s/it]Input ids are automatically padded from 4118 to 5120 to be a multiple of `config.attention_window`: 1024
+ 44% 954/2193 [26:24<36:37,  1.77s/it]Input ids are automatically padded from 3403 to 4096 to be a multiple of `config.attention_window`: 1024
+ 44% 955/2193 [26:26<34:35,  1.68s/it]Input ids are automatically padded from 994 to 1024 to be a multiple of `config.attention_window`: 1024
+ 44% 957/2193 [26:28<30:25,  1.48s/it]Input ids are automatically padded from 2980 to 3072 to be a multiple of `config.attention_window`: 1024
+ 44% 959/2193 [26:31<31:19,  1.52s/it]Input ids are automatically padded from 3606 to 4096 to be a multiple of `config.attention_window`: 1024
+ 44% 964/2193 [26:40<36:32,  1.78s/it]Input ids are automatically padded from 4562 to 5120 to be a multiple of `config.attention_window`: 1024
+ 44% 966/2193 [26:44<37:35,  1.84s/it]Input ids are automatically padded from 6 to 1024 to be a multiple of `config.attention_window`: 1024
+ 44% 967/2193 [26:44<28:58,  1.42s/it]Input ids are automatically padded from 4841 to 5120 to be a multiple of `config.attention_window`: 1024
+ 44% 969/2193 [26:48<33:36,  1.65s/it]Input ids are automatically padded from 695 to 1024 to be a multiple of `config.attention_window`: 1024
+ 44% 974/2193 [26:56<35:24,  1.74s/it]Input ids are automatically padded from 5065 to 5120 to be a multiple of `config.attention_window`: 1024
+ 44% 975/2193 [26:58<36:27,  1.80s/it]Input ids are automatically padded from 813 to 1024 to be a multiple of `config.attention_window`: 1024
+ 45% 976/2193 [26:58<28:20,  1.40s/it]Input ids are automatically padded from 3827 to 4096 to be a multiple of `config.attention_window`: 1024
+ 45% 977/2193 [27:00<28:43,  1.42s/it]Input ids are automatically padded from 3368 to 4096 to be a multiple of `config.attention_window`: 1024
+ 45% 981/2193 [27:07<34:31,  1.71s/it]Input ids are automatically padded from 1861 to 2048 to be a multiple of `config.attention_window`: 1024
+ 45% 984/2193 [27:12<33:41,  1.67s/it]Input ids are automatically padded from 945 to 1024 to be a multiple of `config.attention_window`: 1024
+ 45% 994/2193 [27:29<37:04,  1.86s/it]Input ids are automatically padded from 1142 to 2048 to be a multiple of `config.attention_window`: 1024
+ 45% 997/2193 [27:34<34:24,  1.73s/it]Input ids are automatically padded from 5092 to 5120 to be a multiple of `config.attention_window`: 1024
+{'loss': 1.5003, 'learning_rate': 2.7200182398540814e-05, 'epoch': 1.37}
+ 46% 1000/2193 [27:39<36:19,  1.83s/it]Saving model checkpoint to /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/checkpoint-1000
+Configuration saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/checkpoint-1000/config.json
+Model weights saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/checkpoint-1000/pytorch_model.bin
+ 46% 1001/2193 [27:59<2:23:32,  7.23s/it]Input ids are automatically padded from 4846 to 5120 to be a multiple of `config.attention_window`: 1024
+ 46% 1003/2193 [28:03<1:29:01,  4.49s/it]Input ids are automatically padded from 4215 to 5120 to be a multiple of `config.attention_window`: 1024
+ 46% 1010/2193 [28:16<41:05,  2.08s/it]Input ids are automatically padded from 4140 to 5120 to be a multiple of `config.attention_window`: 1024
+ 46% 1013/2193 [28:21<38:25,  1.95s/it]Input ids are automatically padded from 5096 to 5120 to be a multiple of `config.attention_window`: 1024
+ 46% 1018/2193 [28:31<37:03,  1.89s/it]Input ids are automatically padded from 610 to 1024 to be a multiple of `config.attention_window`: 1024
+ 47% 1024/2193 [28:41<34:58,  1.79s/it]Input ids are automatically padded from 4919 to 5120 to be a multiple of `config.attention_window`: 1024
+ 47% 1025/2193 [28:42<35:13,  1.81s/it]Input ids are automatically padded from 729 to 1024 to be a multiple of `config.attention_window`: 1024
+ 47% 1027/2193 [28:45<30:11,  1.55s/it]Input ids are automatically padded from 2565 to 3072 to be a multiple of `config.attention_window`: 1024
+ 47% 1028/2193 [28:46<27:33,  1.42s/it]Input ids are automatically padded from 2373 to 3072 to be a multiple of `config.attention_window`: 1024
+ 47% 1029/2193 [28:47<25:41,  1.32s/it]Input ids are automatically padded from 1570 to 2048 to be a multiple of `config.attention_window`: 1024
+ 47% 1031/2193 [28:50<26:39,  1.38s/it]Input ids are automatically padded from 4615 to 5120 to be a multiple of `config.attention_window`: 1024
+ 47% 1035/2193 [28:57<33:49,  1.75s/it]Input ids are automatically padded from 4841 to 5120 to be a multiple of `config.attention_window`: 1024
+ 47% 1037/2193 [29:01<34:56,  1.81s/it]Input ids are automatically padded from 3181 to 4096 to be a multiple of `config.attention_window`: 1024
+ 47% 1041/2193 [29:08<34:41,  1.81s/it]Input ids are automatically padded from 3472 to 4096 to be a multiple of `config.attention_window`: 1024
+ 48% 1046/2193 [29:17<35:05,  1.84s/it]Input ids are automatically padded from 562 to 1024 to be a multiple of `config.attention_window`: 1024
+ 48% 1047/2193 [29:17<27:18,  1.43s/it]Input ids are automatically padded from 3324 to 4096 to be a multiple of `config.attention_window`: 1024
+ 48% 1048/2193 [29:19<27:20,  1.43s/it]Input ids are automatically padded from 426 to 1024 to be a multiple of `config.attention_window`: 1024
+ 48% 1049/2193 [29:19<21:32,  1.13s/it]Input ids are automatically padded from 1346 to 2048 to be a multiple of `config.attention_window`: 1024
+ 48% 1050/2193 [29:20<19:36,  1.03s/it]Input ids are automatically padded from 4538 to 5120 to be a multiple of `config.attention_window`: 1024
+ 48% 1052/2193 [29:24<27:36,  1.45s/it]Input ids are automatically padded from 5072 to 5120 to be a multiple of `config.attention_window`: 1024
+ 48% 1056/2193 [29:31<33:40,  1.78s/it]Input ids are automatically padded from 3184 to 4096 to be a multiple of `config.attention_window`: 1024
+ 48% 1058/2193 [29:35<33:02,  1.75s/it]Input ids are automatically padded from 3752 to 4096 to be a multiple of `config.attention_window`: 1024
+ 48% 1060/2193 [29:38<32:37,  1.73s/it]Input ids are automatically padded from 4748 to 5120 to be a multiple of `config.attention_window`: 1024
+ 48% 1062/2193 [29:42<33:41,  1.79s/it]Input ids are automatically padded from 3529 to 4096 to be a multiple of `config.attention_window`: 1024
+ 49% 1069/2193 [29:54<35:07,  1.87s/it]Input ids are automatically padded from 4347 to 5120 to be a multiple of `config.attention_window`: 1024
+ 49% 1070/2193 [29:56<34:56,  1.87s/it]Input ids are automatically padded from 5113 to 5120 to be a multiple of `config.attention_window`: 1024
+ 49% 1072/2193 [30:00<35:05,  1.88s/it]Input ids are automatically padded from 940 to 1024 to be a multiple of `config.attention_window`: 1024
+ 49% 1075/2193 [30:04<31:16,  1.68s/it]Input ids are automatically padded from 3519 to 4096 to be a multiple of `config.attention_window`: 1024
+ 49% 1080/2193 [30:13<33:49,  1.82s/it]Input ids are automatically padded from 4909 to 5120 to be a multiple of `config.attention_window`: 1024
+ 49% 1082/2193 [30:17<34:13,  1.85s/it]Input ids are automatically padded from 1900 to 2048 to be a multiple of `config.attention_window`: 1024
+ 49% 1084/2193 [30:20<30:32,  1.65s/it]Input ids are automatically padded from 3403 to 4096 to be a multiple of `config.attention_window`: 1024
+ 50% 1086/2193 [30:23<31:06,  1.69s/it]Input ids are automatically padded from 4535 to 5120 to be a multiple of `config.attention_window`: 1024
+ 50% 1087/2193 [30:25<32:00,  1.74s/it]Input ids are automatically padded from 2270 to 3072 to be a multiple of `config.attention_window`: 1024
+ 50% 1094/2193 [30:38<33:53,  1.85s/it]Input ids are automatically padded from 1486 to 2048 to be a multiple of `config.attention_window`: 1024
+ 50% 1095/2193 [30:38<28:13,  1.54s/it]Input ids are automatically padded from 3024 to 3072 to be a multiple of `config.attention_window`: 1024
+ 50% 1096/2193 [30:39<26:04,  1.43s/it]Input ids are automatically padded from 4438 to 5120 to be a multiple of `config.attention_window`: 1024
+ 50% 1099/2193 [30:45<31:32,  1.73s/it]Input ids are automatically padded from 4750 to 5120 to be a multiple of `config.attention_window`: 1024
+ 50% 1100/2193 [30:47<32:27,  1.78s/it]Input ids are automatically padded from 3652 to 4096 to be a multiple of `config.attention_window`: 1024
+ 50% 1101/2193 [30:49<30:51,  1.70s/it]Input ids are automatically padded from 3472 to 4096 to be a multiple of `config.attention_window`: 1024
+ 50% 1102/2193 [30:50<29:37,  1.63s/it]Input ids are automatically padded from 2214 to 3072 to be a multiple of `config.attention_window`: 1024
+ 50% 1107/2193 [30:59<32:23,  1.79s/it]Input ids are automatically padded from 379 to 1024 to be a multiple of `config.attention_window`: 1024
+ 51% 1110/2193 [31:03<29:48,  1.65s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 51% 1114/2193 [31:09<30:06,  1.67s/it]Input ids are automatically padded from 3883 to 4096 to be a multiple of `config.attention_window`: 1024
+ 51% 1119/2193 [31:18<32:03,  1.79s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 51% 1123/2193 [31:24<30:36,  1.72s/it]Input ids are automatically padded from 2543 to 3072 to be a multiple of `config.attention_window`: 1024
+ 51% 1127/2193 [31:31<30:56,  1.74s/it]Input ids are automatically padded from 5064 to 5120 to be a multiple of `config.attention_window`: 1024
+ 51% 1128/2193 [31:33<31:26,  1.77s/it]Input ids are automatically padded from 3601 to 4096 to be a multiple of `config.attention_window`: 1024
+ 52% 1130/2193 [31:36<31:01,  1.75s/it]Input ids are automatically padded from 4388 to 5120 to be a multiple of `config.attention_window`: 1024
+ 52% 1133/2193 [31:42<32:13,  1.82s/it]Input ids are automatically padded from 779 to 1024 to be a multiple of `config.attention_window`: 1024
+ 52% 1137/2193 [31:48<30:16,  1.72s/it]Input ids are automatically padded from 1332 to 2048 to be a multiple of `config.attention_window`: 1024
+ 52% 1143/2193 [31:58<31:24,  1.79s/it]Input ids are automatically padded from 2741 to 3072 to be a multiple of `config.attention_window`: 1024
+ 52% 1145/2193 [32:01<29:43,  1.70s/it]Input ids are automatically padded from 4726 to 5120 to be a multiple of `config.attention_window`: 1024
+ 52% 1146/2193 [32:03<30:33,  1.75s/it]Input ids are automatically padded from 2922 to 3072 to be a multiple of `config.attention_window`: 1024
+ 52% 1147/2193 [32:04<27:24,  1.57s/it]Input ids are automatically padded from 3201 to 4096 to be a multiple of `config.attention_window`: 1024
+ 52% 1151/2193 [32:11<30:44,  1.77s/it]Input ids are automatically padded from 374 to 1024 to be a multiple of `config.attention_window`: 1024
+ 53% 1153/2193 [32:13<26:15,  1.51s/it]Input ids are automatically padded from 1038 to 2048 to be a multiple of `config.attention_window`: 1024
+ 53% 1156/2193 [32:18<27:48,  1.61s/it]Input ids are automatically padded from 590 to 1024 to be a multiple of `config.attention_window`: 1024
+ 53% 1157/2193 [32:18<21:52,  1.27s/it]Input ids are automatically padded from 3763 to 4096 to be a multiple of `config.attention_window`: 1024
+ 53% 1161/2193 [32:26<29:07,  1.69s/it]Input ids are automatically padded from 835 to 1024 to be a multiple of `config.attention_window`: 1024
+ 53% 1162/2193 [32:26<22:50,  1.33s/it]Input ids are automatically padded from 2151 to 3072 to be a multiple of `config.attention_window`: 1024
+ 53% 1165/2193 [32:31<27:08,  1.58s/it]Input ids are automatically padded from 611 to 1024 to be a multiple of `config.attention_window`: 1024
+ 53% 1167/2193 [32:33<24:46,  1.45s/it]Input ids are automatically padded from 4355 to 5120 to be a multiple of `config.attention_window`: 1024
+ 53% 1168/2193 [32:35<26:32,  1.55s/it]Input ids are automatically padded from 875 to 1024 to be a multiple of `config.attention_window`: 1024
+ 53% 1171/2193 [32:39<26:40,  1.57s/it]Input ids are automatically padded from 478 to 1024 to be a multiple of `config.attention_window`: 1024
+ 53% 1172/2193 [32:40<21:00,  1.23s/it]Input ids are automatically padded from 1645 to 2048 to be a multiple of `config.attention_window`: 1024
+ 54% 1174/2193 [32:43<22:52,  1.35s/it]Input ids are automatically padded from 839 to 1024 to be a multiple of `config.attention_window`: 1024
+ 54% 1176/2193 [32:45<22:29,  1.33s/it]Input ids are automatically padded from 2270 to 3072 to be a multiple of `config.attention_window`: 1024
+ 54% 1178/2193 [32:48<24:45,  1.46s/it]Input ids are automatically padded from 3121 to 4096 to be a multiple of `config.attention_window`: 1024
+ 54% 1181/2193 [32:53<28:27,  1.69s/it]Input ids are automatically padded from 2185 to 3072 to be a multiple of `config.attention_window`: 1024
+ 54% 1185/2193 [33:00<29:23,  1.75s/it]Input ids are automatically padded from 2358 to 3072 to be a multiple of `config.attention_window`: 1024
+ 54% 1186/2193 [33:01<26:01,  1.55s/it]Input ids are automatically padded from 1152 to 2048 to be a multiple of `config.attention_window`: 1024
+ 54% 1190/2193 [33:08<28:13,  1.69s/it]Input ids are automatically padded from 1332 to 2048 to be a multiple of `config.attention_window`: 1024
+ 54% 1195/2193 [33:16<29:28,  1.77s/it]Input ids are automatically padded from 3466 to 4096 to be a multiple of `config.attention_window`: 1024
+ 55% 1196/2193 [33:17<28:02,  1.69s/it]Input ids are automatically padded from 394 to 1024 to be a multiple of `config.attention_window`: 1024
+ 55% 1197/2193 [33:18<21:47,  1.31s/it]Input ids are automatically padded from 4918 to 5120 to be a multiple of `config.attention_window`: 1024
+ 55% 1198/2193 [33:20<24:47,  1.50s/it]Input ids are automatically padded from 1512 to 2048 to be a multiple of `config.attention_window`: 1024
+ 55% 1199/2193 [33:21<21:14,  1.28s/it]Input ids are automatically padded from 3771 to 4096 to be a multiple of `config.attention_window`: 1024
+ 55% 1200/2193 [33:22<22:16,  1.35s/it]Input ids are automatically padded from 3718 to 4096 to be a multiple of `config.attention_window`: 1024
+ 55% 1201/2193 [33:24<23:01,  1.39s/it]Input ids are automatically padded from 562 to 1024 to be a multiple of `config.attention_window`: 1024
+ 55% 1202/2193 [33:24<18:26,  1.12s/it]Input ids are automatically padded from 4415 to 5120 to be a multiple of `config.attention_window`: 1024
+ 55% 1204/2193 [33:28<24:41,  1.50s/it]Input ids are automatically padded from 4173 to 5120 to be a multiple of `config.attention_window`: 1024
+ 55% 1208/2193 [33:35<29:02,  1.77s/it]Input ids are automatically padded from 3563 to 4096 to be a multiple of `config.attention_window`: 1024
+ 55% 1213/2193 [33:44<29:48,  1.82s/it]Input ids are automatically padded from 362 to 1024 to be a multiple of `config.attention_window`: 1024
+ 55% 1215/2193 [33:46<25:13,  1.55s/it]Input ids are automatically padded from 4839 to 5120 to be a multiple of `config.attention_window`: 1024
+ 56% 1218/2193 [33:52<28:49,  1.77s/it]Input ids are automatically padded from 266 to 1024 to be a multiple of `config.attention_window`: 1024
+ 56% 1222/2193 [33:58<27:50,  1.72s/it]Input ids are automatically padded from 4817 to 5120 to be a multiple of `config.attention_window`: 1024
+ 56% 1223/2193 [34:00<28:24,  1.76s/it]Input ids are automatically padded from 4063 to 4096 to be a multiple of `config.attention_window`: 1024
+ 56% 1226/2193 [34:05<28:46,  1.79s/it]Input ids are automatically padded from 2358 to 3072 to be a multiple of `config.attention_window`: 1024
+ 56% 1232/2193 [34:16<29:28,  1.84s/it]Input ids are automatically padded from 4709 to 5120 to be a multiple of `config.attention_window`: 1024
+ 56% 1233/2193 [34:18<29:39,  1.85s/it]Input ids are automatically padded from 3359 to 4096 to be a multiple of `config.attention_window`: 1024
+ 56% 1236/2193 [34:23<28:43,  1.80s/it]Input ids are automatically padded from 3350 to 4096 to be a multiple of `config.attention_window`: 1024
+ 57% 1240/2193 [34:30<28:50,  1.82s/it]Input ids are automatically padded from 338 to 1024 to be a multiple of `config.attention_window`: 1024
+ 57% 1242/2193 [34:33<24:43,  1.56s/it]Input ids are automatically padded from 3123 to 4096 to be a multiple of `config.attention_window`: 1024
+ 57% 1243/2193 [34:34<24:07,  1.52s/it]Input ids are automatically padded from 3601 to 4096 to be a multiple of `config.attention_window`: 1024
+ 57% 1246/2193 [34:39<26:41,  1.69s/it]Input ids are automatically padded from 3431 to 4096 to be a multiple of `config.attention_window`: 1024
+ 57% 1247/2193 [34:41<25:52,  1.64s/it]Input ids are automatically padded from 3617 to 4096 to be a multiple of `config.attention_window`: 1024
+ 57% 1248/2193 [34:42<25:18,  1.61s/it]Input ids are automatically padded from 4230 to 5120 to be a multiple of `config.attention_window`: 1024
+ 57% 1250/2193 [34:46<27:15,  1.73s/it]Input ids are automatically padded from 1284 to 2048 to be a multiple of `config.attention_window`: 1024
+ 57% 1251/2193 [34:47<22:46,  1.45s/it]Input ids are automatically padded from 3767 to 4096 to be a multiple of `config.attention_window`: 1024
+ 57% 1253/2193 [34:50<24:49,  1.58s/it]Input ids are automatically padded from 842 to 1024 to be a multiple of `config.attention_window`: 1024
+ 57% 1254/2193 [34:51<19:43,  1.26s/it]Input ids are automatically padded from 4434 to 5120 to be a multiple of `config.attention_window`: 1024
+ 57% 1255/2193 [34:52<22:13,  1.42s/it]Input ids are automatically padded from 1766 to 2048 to be a multiple of `config.attention_window`: 1024
+ 57% 1256/2193 [34:53<19:29,  1.25s/it]Input ids are automatically padded from 4215 to 5120 to be a multiple of `config.attention_window`: 1024
+ 57% 1259/2193 [34:59<25:46,  1.66s/it]Input ids are automatically padded from 4677 to 5120 to be a multiple of `config.attention_window`: 1024
+ 57% 1260/2193 [35:01<26:41,  1.72s/it]Input ids are automatically padded from 3920 to 4096 to be a multiple of `config.attention_window`: 1024
+ 58% 1264/2193 [35:08<27:46,  1.79s/it]Input ids are automatically padded from 4638 to 5120 to be a multiple of `config.attention_window`: 1024
+ 58% 1266/2193 [35:11<28:08,  1.82s/it]Input ids are automatically padded from 4829 to 5120 to be a multiple of `config.attention_window`: 1024
+ 58% 1268/2193 [35:15<28:23,  1.84s/it]Input ids are automatically padded from 2625 to 3072 to be a multiple of `config.attention_window`: 1024
+ 58% 1271/2193 [35:20<27:03,  1.76s/it]Input ids are automatically padded from 3744 to 4096 to be a multiple of `config.attention_window`: 1024
+ 58% 1275/2193 [35:27<27:18,  1.78s/it]Input ids are automatically padded from 511 to 1024 to be a multiple of `config.attention_window`: 1024
+ 58% 1276/2193 [35:28<20:55,  1.37s/it]Input ids are automatically padded from 1747 to 2048 to be a multiple of `config.attention_window`: 1024
+ 58% 1277/2193 [35:28<18:12,  1.19s/it]Input ids are automatically padded from 3594 to 4096 to be a multiple of `config.attention_window`: 1024
+ 58% 1278/2193 [35:30<19:37,  1.29s/it]Input ids are automatically padded from 5008 to 5120 to be a multiple of `config.attention_window`: 1024
+ 58% 1279/2193 [35:32<22:26,  1.47s/it]Input ids are automatically padded from 226 to 1024 to be a multiple of `config.attention_window`: 1024
+ 58% 1282/2193 [35:36<23:20,  1.54s/it]Input ids are automatically padded from 4671 to 5120 to be a multiple of `config.attention_window`: 1024
+ 59% 1284/2193 [35:40<26:05,  1.72s/it]Input ids are automatically padded from 3763 to 4096 to be a multiple of `config.attention_window`: 1024
+ 59% 1288/2193 [35:47<27:13,  1.80s/it]Input ids are automatically padded from 4747 to 5120 to be a multiple of `config.attention_window`: 1024
+ 59% 1289/2193 [35:49<27:25,  1.82s/it]Input ids are automatically padded from 4958 to 5120 to be a multiple of `config.attention_window`: 1024
+ 59% 1294/2193 [35:58<27:39,  1.85s/it]Input ids are automatically padded from 170 to 1024 to be a multiple of `config.attention_window`: 1024
+ 59% 1302/2193 [36:12<27:18,  1.84s/it]Input ids are automatically padded from 3144 to 4096 to be a multiple of `config.attention_window`: 1024
+ 60% 1306/2193 [36:19<27:12,  1.84s/it]Input ids are automatically padded from 4232 to 5120 to be a multiple of `config.attention_window`: 1024
+ 60% 1308/2193 [36:23<27:22,  1.86s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 60% 1315/2193 [36:34<27:01,  1.85s/it]Input ids are automatically padded from 4785 to 5120 to be a multiple of `config.attention_window`: 1024
+ 60% 1316/2193 [36:36<27:12,  1.86s/it]Input ids are automatically padded from 1077 to 2048 to be a multiple of `config.attention_window`: 1024
+ 60% 1317/2193 [36:37<22:26,  1.54s/it]Input ids are automatically padded from 3790 to 4096 to be a multiple of `config.attention_window`: 1024
+ 60% 1318/2193 [36:39<22:18,  1.53s/it]Input ids are automatically padded from 3889 to 4096 to be a multiple of `config.attention_window`: 1024
+ 60% 1319/2193 [36:40<22:09,  1.52s/it]Input ids are automatically padded from 4806 to 5120 to be a multiple of `config.attention_window`: 1024
+ 60% 1324/2193 [36:50<26:14,  1.81s/it]Input ids are automatically padded from 3680 to 4096 to be a multiple of `config.attention_window`: 1024
+ 60% 1326/2193 [36:53<25:22,  1.76s/it]Input ids are automatically padded from 4783 to 5120 to be a multiple of `config.attention_window`: 1024
+ 61% 1328/2193 [36:57<26:12,  1.82s/it]Input ids are automatically padded from 1270 to 2048 to be a multiple of `config.attention_window`: 1024
+ 61% 1331/2193 [37:01<24:32,  1.71s/it]Input ids are automatically padded from 3473 to 4096 to be a multiple of `config.attention_window`: 1024
+ 61% 1333/2193 [37:05<24:43,  1.72s/it]Input ids are automatically padded from 4810 to 5120 to be a multiple of `config.attention_window`: 1024
+ 61% 1334/2193 [37:06<25:13,  1.76s/it]Input ids are automatically padded from 758 to 1024 to be a multiple of `config.attention_window`: 1024
+ 61% 1337/2193 [37:11<23:08,  1.62s/it]Input ids are automatically padded from 3500 to 4096 to be a multiple of `config.attention_window`: 1024
+ 61% 1339/2193 [37:14<23:39,  1.66s/it]Input ids are automatically padded from 534 to 1024 to be a multiple of `config.attention_window`: 1024
+ 61% 1341/2193 [37:16<20:44,  1.46s/it]Input ids are automatically padded from 4040 to 4096 to be a multiple of `config.attention_window`: 1024
+ 61% 1343/2193 [37:20<22:40,  1.60s/it]Input ids are automatically padded from 3790 to 4096 to be a multiple of `config.attention_window`: 1024
+ 61% 1344/2193 [37:21<22:12,  1.57s/it]Input ids are automatically padded from 3469 to 4096 to be a multiple of `config.attention_window`: 1024
+ 61% 1346/2193 [37:25<23:13,  1.65s/it]Input ids are automatically padded from 3966 to 4096 to be a multiple of `config.attention_window`: 1024
+ 61% 1347/2193 [37:26<22:23,  1.59s/it]Input ids are automatically padded from 1118 to 2048 to be a multiple of `config.attention_window`: 1024
+ 62% 1354/2193 [37:38<25:11,  1.80s/it]Input ids are automatically padded from 560 to 1024 to be a multiple of `config.attention_window`: 1024
+ 62% 1356/2193 [37:40<21:19,  1.53s/it]Input ids are automatically padded from 4438 to 5120 to be a multiple of `config.attention_window`: 1024
+ 62% 1358/2193 [37:44<23:54,  1.72s/it]Input ids are automatically padded from 3050 to 3072 to be a multiple of `config.attention_window`: 1024
+ 62% 1362/2193 [37:51<24:27,  1.77s/it]Input ids are automatically padded from 3549 to 4096 to be a multiple of `config.attention_window`: 1024
+ 62% 1364/2193 [37:54<24:09,  1.75s/it]Input ids are automatically padded from 4709 to 5120 to be a multiple of `config.attention_window`: 1024
+ 62% 1370/2193 [38:05<25:20,  1.85s/it]Input ids are automatically padded from 2900 to 3072 to be a multiple of `config.attention_window`: 1024
+ 63% 1383/2193 [38:29<25:19,  1.88s/it]Input ids are automatically padded from 398 to 1024 to be a multiple of `config.attention_window`: 1024
+ 63% 1390/2193 [38:41<24:34,  1.84s/it]Input ids are automatically padded from 4232 to 5120 to be a multiple of `config.attention_window`: 1024
+ 63% 1391/2193 [38:43<24:28,  1.83s/it]Input ids are automatically padded from 4063 to 4096 to be a multiple of `config.attention_window`: 1024
+ 63% 1392/2193 [38:44<23:10,  1.74s/it]Input ids are automatically padded from 1191 to 2048 to be a multiple of `config.attention_window`: 1024
+ 64% 1393/2193 [38:45<19:26,  1.46s/it]Input ids are automatically padded from 3681 to 4096 to be a multiple of `config.attention_window`: 1024
+ 64% 1394/2193 [38:47<19:23,  1.46s/it]Input ids are automatically padded from 725 to 1024 to be a multiple of `config.attention_window`: 1024
+ 64% 1398/2193 [38:53<21:38,  1.63s/it]Input ids are automatically padded from 3702 to 4096 to be a multiple of `config.attention_window`: 1024
+ 64% 1402/2193 [39:00<23:36,  1.79s/it]Input ids are automatically padded from 2057 to 3072 to be a multiple of `config.attention_window`: 1024
+ 64% 1403/2193 [39:01<21:08,  1.61s/it]Input ids are automatically padded from 982 to 1024 to be a multiple of `config.attention_window`: 1024
+ 64% 1405/2193 [39:03<19:03,  1.45s/it]Input ids are automatically padded from 4291 to 5120 to be a multiple of `config.attention_window`: 1024
+ 64% 1407/2193 [39:07<21:37,  1.65s/it]Input ids are automatically padded from 418 to 1024 to be a multiple of `config.attention_window`: 1024
+ 64% 1408/2193 [39:08<16:53,  1.29s/it]Input ids are automatically padded from 4883 to 5120 to be a multiple of `config.attention_window`: 1024
+ 64% 1410/2193 [39:11<20:55,  1.60s/it]Input ids are automatically padded from 4050 to 4096 to be a multiple of `config.attention_window`: 1024
+ 65% 1421/2193 [39:32<23:43,  1.84s/it]Input ids are automatically padded from 3500 to 4096 to be a multiple of `config.attention_window`: 1024
+ 65% 1422/2193 [39:33<22:19,  1.74s/it]Input ids are automatically padded from 2701 to 3072 to be a multiple of `config.attention_window`: 1024
+ 65% 1424/2193 [39:36<21:20,  1.67s/it]Input ids are automatically padded from 4550 to 5120 to be a multiple of `config.attention_window`: 1024
+ 65% 1430/2193 [39:47<23:26,  1.84s/it]Input ids are automatically padded from 422 to 1024 to be a multiple of `config.attention_window`: 1024
+ 65% 1432/2193 [39:50<19:59,  1.58s/it]Input ids are automatically padded from 354 to 1024 to be a multiple of `config.attention_window`: 1024
+ 65% 1436/2193 [39:56<21:03,  1.67s/it]Input ids are automatically padded from 786 to 1024 to be a multiple of `config.attention_window`: 1024
+ 66% 1438/2193 [39:58<18:28,  1.47s/it]Input ids are automatically padded from 467 to 1024 to be a multiple of `config.attention_window`: 1024
+ 66% 1440/2193 [40:01<17:11,  1.37s/it]Input ids are automatically padded from 1889 to 2048 to be a multiple of `config.attention_window`: 1024
+ 66% 1443/2193 [40:05<19:27,  1.56s/it]Input ids are automatically padded from 1747 to 2048 to be a multiple of `config.attention_window`: 1024
+ 66% 1444/2193 [40:06<16:32,  1.33s/it]Input ids are automatically padded from 4123 to 5120 to be a multiple of `config.attention_window`: 1024
+ 66% 1446/2193 [40:10<20:00,  1.61s/it]Input ids are automatically padded from 3744 to 4096 to be a multiple of `config.attention_window`: 1024
+ 66% 1448/2193 [40:13<20:44,  1.67s/it]Input ids are automatically padded from 3631 to 4096 to be a multiple of `config.attention_window`: 1024
+ 66% 1451/2193 [40:18<21:23,  1.73s/it]Input ids are automatically padded from 2498 to 3072 to be a multiple of `config.attention_window`: 1024
+ 66% 1452/2193 [40:19<19:17,  1.56s/it]Input ids are automatically padded from 3823 to 4096 to be a multiple of `config.attention_window`: 1024
+ 66% 1456/2193 [40:27<21:58,  1.79s/it]Input ids are automatically padded from 3144 to 4096 to be a multiple of `config.attention_window`: 1024
+ 67% 1461/2193 [40:36<22:31,  1.85s/it]Input ids are automatically padded from 1757 to 2048 to be a multiple of `config.attention_window`: 1024
+ 67% 1465/2193 [40:42<21:24,  1.77s/it]Input ids are automatically padded from 4438 to 5120 to be a multiple of `config.attention_window`: 1024
+ 67% 1466/2193 [40:44<21:29,  1.77s/it]Input ids are automatically padded from 4643 to 5120 to be a multiple of `config.attention_window`: 1024
+ 67% 1469/2193 [40:49<22:06,  1.83s/it]Input ids are automatically padded from 1270 to 2048 to be a multiple of `config.attention_window`: 1024
+ 67% 1470/2193 [40:50<18:13,  1.51s/it]Input ids are automatically padded from 4478 to 5120 to be a multiple of `config.attention_window`: 1024
+ 67% 1474/2193 [40:58<21:27,  1.79s/it]Input ids are automatically padded from 1766 to 2048 to be a multiple of `config.attention_window`: 1024
+ 67% 1475/2193 [40:59<18:00,  1.50s/it]Input ids are automatically padded from 982 to 1024 to be a multiple of `config.attention_window`: 1024
+ 67% 1477/2193 [41:01<16:54,  1.42s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 67% 1479/2193 [41:03<15:47,  1.33s/it]Input ids are automatically padded from 2057 to 3072 to be a multiple of `config.attention_window`: 1024
+ 68% 1481/2193 [41:06<16:59,  1.43s/it]Input ids are automatically padded from 4709 to 5120 to be a multiple of `config.attention_window`: 1024
+ 68% 1485/2193 [41:14<21:03,  1.79s/it]Input ids are automatically padded from 3184 to 4096 to be a multiple of `config.attention_window`: 1024
+ 68% 1486/2193 [41:15<19:48,  1.68s/it]Input ids are automatically padded from 5008 to 5120 to be a multiple of `config.attention_window`: 1024
+ 68% 1491/2193 [41:25<21:31,  1.84s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 68% 1496/2193 [41:33<20:26,  1.76s/it]Input ids are automatically padded from 842 to 1024 to be a multiple of `config.attention_window`: 1024
+{'loss': 1.3233, 'learning_rate': 1.580027359781122e-05, 'epoch': 2.05}
+ 68% 1500/2193 [41:39<19:45,  1.71s/it]Saving model checkpoint to /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/checkpoint-1500
+Configuration saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/checkpoint-1500/config.json
+Model weights saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/checkpoint-1500/pytorch_model.bin
+ 68% 1501/2193 [41:59<1:25:02,  7.37s/it]Input ids are automatically padded from 562 to 1024 to be a multiple of `config.attention_window`: 1024
+ 69% 1503/2193 [42:02<49:45,  4.33s/it]  Input ids are automatically padded from 4643 to 5120 to be a multiple of `config.attention_window`: 1024
+ 69% 1506/2193 [42:08<31:15,  2.73s/it]Input ids are automatically padded from 2222 to 3072 to be a multiple of `config.attention_window`: 1024
+ 69% 1507/2193 [42:09<26:03,  2.28s/it]Input ids are automatically padded from 1142 to 2048 to be a multiple of `config.attention_window`: 1024
+ 69% 1509/2193 [42:12<21:33,  1.89s/it]Input ids are automatically padded from 1889 to 2048 to be a multiple of `config.attention_window`: 1024
+ 69% 1510/2193 [42:12<17:58,  1.58s/it]Input ids are automatically padded from 725 to 1024 to be a multiple of `config.attention_window`: 1024
+ 69% 1512/2193 [42:15<16:24,  1.45s/it]Input ids are automatically padded from 4562 to 5120 to be a multiple of `config.attention_window`: 1024
+ 69% 1519/2193 [42:28<20:25,  1.82s/it]Input ids are automatically padded from 4140 to 5120 to be a multiple of `config.attention_window`: 1024
+ 70% 1527/2193 [42:43<20:42,  1.87s/it]Input ids are automatically padded from 4535 to 5120 to be a multiple of `config.attention_window`: 1024
+ 70% 1528/2193 [42:45<20:34,  1.86s/it]Input ids are automatically padded from 839 to 1024 to be a multiple of `config.attention_window`: 1024
+ 70% 1529/2193 [42:45<15:50,  1.43s/it]Input ids are automatically padded from 4040 to 4096 to be a multiple of `config.attention_window`: 1024
+ 70% 1532/2193 [42:50<18:20,  1.67s/it]Input ids are automatically padded from 945 to 1024 to be a multiple of `config.attention_window`: 1024
+ 70% 1539/2193 [43:02<19:42,  1.81s/it]Input ids are automatically padded from 3123 to 4096 to be a multiple of `config.attention_window`: 1024
+ 70% 1541/2193 [43:05<19:03,  1.75s/it]Input ids are automatically padded from 779 to 1024 to be a multiple of `config.attention_window`: 1024
+ 70% 1542/2193 [43:06<14:51,  1.37s/it]Input ids are automatically padded from 4538 to 5120 to be a multiple of `config.attention_window`: 1024
+ 70% 1545/2193 [43:11<18:17,  1.69s/it]Input ids are automatically padded from 4347 to 5120 to be a multiple of `config.attention_window`: 1024
+ 70% 1546/2193 [43:13<18:46,  1.74s/it]Input ids are automatically padded from 3744 to 4096 to be a multiple of `config.attention_window`: 1024
+ 71% 1549/2193 [43:18<19:06,  1.78s/it]Input ids are automatically padded from 3771 to 4096 to be a multiple of `config.attention_window`: 1024
+ 71% 1552/2193 [43:24<19:01,  1.78s/it]Input ids are automatically padded from 4841 to 5120 to be a multiple of `config.attention_window`: 1024
+ 71% 1556/2193 [43:31<19:22,  1.82s/it]Input ids are automatically padded from 1486 to 2048 to be a multiple of `config.attention_window`: 1024
+ 71% 1559/2193 [43:36<18:08,  1.72s/it]Input ids are automatically padded from 3473 to 4096 to be a multiple of `config.attention_window`: 1024
+ 71% 1562/2193 [43:41<18:24,  1.75s/it]Input ids are automatically padded from 3121 to 4096 to be a multiple of `config.attention_window`: 1024
+ 71% 1566/2193 [43:48<18:49,  1.80s/it]Input ids are automatically padded from 5092 to 5120 to be a multiple of `config.attention_window`: 1024
+ 72% 1569/2193 [43:54<19:20,  1.86s/it]Input ids are automatically padded from 3601 to 4096 to be a multiple of `config.attention_window`: 1024
+ 72% 1572/2193 [43:59<18:41,  1.81s/it]Input ids are automatically padded from 3763 to 4096 to be a multiple of `config.attention_window`: 1024
+ 72% 1573/2193 [44:00<17:43,  1.72s/it]Input ids are automatically padded from 1570 to 2048 to be a multiple of `config.attention_window`: 1024
+ 72% 1574/2193 [44:01<14:57,  1.45s/it]Input ids are automatically padded from 4750 to 5120 to be a multiple of `config.attention_window`: 1024
+ 72% 1577/2193 [44:07<17:41,  1.72s/it]Input ids are automatically padded from 871 to 1024 to be a multiple of `config.attention_window`: 1024
+ 72% 1580/2193 [44:11<16:33,  1.62s/it]Input ids are automatically padded from 4615 to 5120 to be a multiple of `config.attention_window`: 1024
+ 72% 1582/2193 [44:15<17:48,  1.75s/it]Input ids are automatically padded from 3324 to 4096 to be a multiple of `config.attention_window`: 1024
+ 72% 1583/2193 [44:16<16:50,  1.66s/it]Input ids are automatically padded from 3144 to 4096 to be a multiple of `config.attention_window`: 1024
+ 72% 1587/2193 [44:23<17:55,  1.77s/it]Input ids are automatically padded from 835 to 1024 to be a multiple of `config.attention_window`: 1024
+ 72% 1588/2193 [44:24<14:00,  1.39s/it]Input ids are automatically padded from 4232 to 5120 to be a multiple of `config.attention_window`: 1024
+ 72% 1589/2193 [44:25<15:17,  1.52s/it]Input ids are automatically padded from 3790 to 4096 to be a multiple of `config.attention_window`: 1024
+ 73% 1595/2193 [44:36<18:17,  1.83s/it]Input ids are automatically padded from 3868 to 4096 to be a multiple of `config.attention_window`: 1024
+ 73% 1599/2193 [44:44<18:13,  1.84s/it]Input ids are automatically padded from 2185 to 3072 to be a multiple of `config.attention_window`: 1024
+ 73% 1601/2193 [44:47<16:59,  1.72s/it]Input ids are automatically padded from 4839 to 5120 to be a multiple of `config.attention_window`: 1024
+ 73% 1604/2193 [44:52<18:03,  1.84s/it]Input ids are automatically padded from 3652 to 4096 to be a multiple of `config.attention_window`: 1024
+ 73% 1605/2193 [44:54<16:56,  1.73s/it]Input ids are automatically padded from 3039 to 3072 to be a multiple of `config.attention_window`: 1024
+ 73% 1609/2193 [45:01<17:06,  1.76s/it]Input ids are automatically padded from 4123 to 5120 to be a multiple of `config.attention_window`: 1024
+ 74% 1612/2193 [45:06<17:41,  1.83s/it]Input ids are automatically padded from 1118 to 2048 to be a multiple of `config.attention_window`: 1024
+ 74% 1614/2193 [45:09<15:48,  1.64s/it]Input ids are automatically padded from 3403 to 4096 to be a multiple of `config.attention_window`: 1024
+ 74% 1616/2193 [45:12<16:11,  1.68s/it]Input ids are automatically padded from 4919 to 5120 to be a multiple of `config.attention_window`: 1024
+ 74% 1620/2193 [45:20<17:20,  1.82s/it]Input ids are automatically padded from 3840 to 4096 to be a multiple of `config.attention_window`: 1024
+ 74% 1621/2193 [45:21<16:29,  1.73s/it]Input ids are automatically padded from 4841 to 5120 to be a multiple of `config.attention_window`: 1024
+ 74% 1623/2193 [45:25<17:11,  1.81s/it]Input ids are automatically padded from 3606 to 4096 to be a multiple of `config.attention_window`: 1024
+ 74% 1631/2193 [45:40<17:39,  1.88s/it]Input ids are automatically padded from 4230 to 5120 to be a multiple of `config.attention_window`: 1024
+ 75% 1635/2193 [45:47<17:26,  1.88s/it]Input ids are automatically padded from 2151 to 3072 to be a multiple of `config.attention_window`: 1024
+ 75% 1641/2193 [45:58<16:51,  1.83s/it]Input ids are automatically padded from 4634 to 5120 to be a multiple of `config.attention_window`: 1024
+ 75% 1648/2193 [46:11<17:01,  1.87s/it]Input ids are automatically padded from 5064 to 5120 to be a multiple of `config.attention_window`: 1024
+ 75% 1650/2193 [46:15<16:52,  1.86s/it]Input ids are automatically padded from 452 to 1024 to be a multiple of `config.attention_window`: 1024
+ 75% 1651/2193 [46:15<13:00,  1.44s/it]Input ids are automatically padded from 4063 to 4096 to be a multiple of `config.attention_window`: 1024
+ 75% 1653/2193 [46:18<14:21,  1.60s/it]Input ids are automatically padded from 1645 to 2048 to be a multiple of `config.attention_window`: 1024
+ 75% 1654/2193 [46:19<12:14,  1.36s/it]Input ids are automatically padded from 3594 to 4096 to be a multiple of `config.attention_window`: 1024
+ 76% 1660/2193 [46:30<15:59,  1.80s/it]Input ids are automatically padded from 4476 to 5120 to be a multiple of `config.attention_window`: 1024
+ 76% 1663/2193 [46:36<16:12,  1.83s/it]Input ids are automatically padded from 512 to 1024 to be a multiple of `config.attention_window`: 1024
+ 76% 1664/2193 [46:36<12:35,  1.43s/it]Input ids are automatically padded from 418 to 1024 to be a multiple of `config.attention_window`: 1024
+ 76% 1665/2193 [46:37<10:00,  1.14s/it]Input ids are automatically padded from 3106 to 4096 to be a multiple of `config.attention_window`: 1024
+ 76% 1672/2193 [46:49<15:42,  1.81s/it]Input ids are automatically padded from 4041 to 4096 to be a multiple of `config.attention_window`: 1024
+ 76% 1675/2193 [46:54<15:23,  1.78s/it]Input ids are automatically padded from 994 to 1024 to be a multiple of `config.attention_window`: 1024
+ 77% 1689/2193 [47:19<15:42,  1.87s/it]Input ids are automatically padded from 1332 to 2048 to be a multiple of `config.attention_window`: 1024
+ 77% 1691/2193 [47:22<13:45,  1.64s/it]Input ids are automatically padded from 3702 to 4096 to be a multiple of `config.attention_window`: 1024
+ 77% 1696/2193 [47:31<15:03,  1.82s/it]Input ids are automatically padded from 3883 to 4096 to be a multiple of `config.attention_window`: 1024
+ 77% 1697/2193 [47:33<14:19,  1.73s/it]Input ids are automatically padded from 422 to 1024 to be a multiple of `config.attention_window`: 1024
+ 77% 1698/2193 [47:33<11:10,  1.35s/it]Input ids are automatically padded from 4434 to 5120 to be a multiple of `config.attention_window`: 1024
+ 78% 1700/2193 [47:37<13:14,  1.61s/it]Input ids are automatically padded from 4173 to 5120 to be a multiple of `config.attention_window`: 1024
+ 78% 1701/2193 [47:39<13:46,  1.68s/it]Input ids are automatically padded from 4215 to 5120 to be a multiple of `config.attention_window`: 1024
+ 78% 1706/2193 [47:48<14:58,  1.84s/it]Input ids are automatically padded from 729 to 1024 to be a multiple of `config.attention_window`: 1024
+ 78% 1707/2193 [47:48<11:37,  1.44s/it]Input ids are automatically padded from 4006 to 4096 to be a multiple of `config.attention_window`: 1024
+ 78% 1710/2193 [47:54<13:21,  1.66s/it]Input ids are automatically padded from 4173 to 5120 to be a multiple of `config.attention_window`: 1024
+ 78% 1711/2193 [47:55<13:47,  1.72s/it]Input ids are automatically padded from 4545 to 5120 to be a multiple of `config.attention_window`: 1024
+ 78% 1712/2193 [47:57<13:59,  1.75s/it]Input ids are automatically padded from 4200 to 5120 to be a multiple of `config.attention_window`: 1024
+ 78% 1716/2193 [48:05<14:28,  1.82s/it]Input ids are automatically padded from 4810 to 5120 to be a multiple of `config.attention_window`: 1024
+ 78% 1717/2193 [48:07<14:31,  1.83s/it]Input ids are automatically padded from 3680 to 4096 to be a multiple of `config.attention_window`: 1024
+ 78% 1719/2193 [48:10<13:58,  1.77s/it]Input ids are automatically padded from 1191 to 2048 to be a multiple of `config.attention_window`: 1024
+ 78% 1720/2193 [48:11<11:39,  1.48s/it]Input ids are automatically padded from 747 to 1024 to be a multiple of `config.attention_window`: 1024
+ 79% 1723/2193 [48:15<11:57,  1.53s/it]Input ids are automatically padded from 3601 to 4096 to be a multiple of `config.attention_window`: 1024
+ 79% 1727/2193 [48:22<13:38,  1.76s/it]Input ids are automatically padded from 4817 to 5120 to be a multiple of `config.attention_window`: 1024
+ 79% 1728/2193 [48:24<13:49,  1.78s/it]Input ids are automatically padded from 3024 to 3072 to be a multiple of `config.attention_window`: 1024
+ 79% 1729/2193 [48:25<12:20,  1.60s/it]Input ids are automatically padded from 398 to 1024 to be a multiple of `config.attention_window`: 1024
+ 79% 1730/2193 [48:25<09:40,  1.25s/it]Input ids are automatically padded from 590 to 1024 to be a multiple of `config.attention_window`: 1024
+ 79% 1732/2193 [48:28<09:53,  1.29s/it]Input ids are automatically padded from 426 to 1024 to be a multiple of `config.attention_window`: 1024
+ 79% 1733/2193 [48:28<07:52,  1.03s/it]Input ids are automatically padded from 3360 to 4096 to be a multiple of `config.attention_window`: 1024
+ 79% 1734/2193 [48:30<08:55,  1.17s/it]Input ids are automatically padded from 2238 to 3072 to be a multiple of `config.attention_window`: 1024
+ 79% 1743/2193 [48:46<13:52,  1.85s/it]Input ids are automatically padded from 4147 to 5120 to be a multiple of `config.attention_window`: 1024
+ 80% 1744/2193 [48:48<13:50,  1.85s/it]Input ids are automatically padded from 3472 to 4096 to be a multiple of `config.attention_window`: 1024
+ 80% 1745/2193 [48:49<12:57,  1.74s/it]Input ids are automatically padded from 5065 to 5120 to be a multiple of `config.attention_window`: 1024
+ 80% 1747/2193 [48:53<13:28,  1.81s/it]Input ids are automatically padded from 2151 to 3072 to be a multiple of `config.attention_window`: 1024
+ 80% 1748/2193 [48:54<12:00,  1.62s/it]Input ids are automatically padded from 4063 to 4096 to be a multiple of `config.attention_window`: 1024
+ 80% 1753/2193 [49:03<13:11,  1.80s/it]Input ids are automatically padded from 3631 to 4096 to be a multiple of `config.attention_window`: 1024
+ 80% 1754/2193 [49:05<12:21,  1.69s/it]Input ids are automatically padded from 689 to 1024 to be a multiple of `config.attention_window`: 1024
+ 80% 1755/2193 [49:05<09:42,  1.33s/it]Input ids are automatically padded from 1747 to 2048 to be a multiple of `config.attention_window`: 1024
+ 80% 1756/2193 [49:06<08:27,  1.16s/it]Input ids are automatically padded from 875 to 1024 to be a multiple of `config.attention_window`: 1024
+ 80% 1758/2193 [49:08<09:02,  1.25s/it]Input ids are automatically padded from 4747 to 5120 to be a multiple of `config.attention_window`: 1024
+ 80% 1760/2193 [49:12<11:17,  1.57s/it]Input ids are automatically padded from 374 to 1024 to be a multiple of `config.attention_window`: 1024
+ 80% 1761/2193 [49:13<08:44,  1.21s/it]Input ids are automatically padded from 3472 to 4096 to be a multiple of `config.attention_window`: 1024
+ 81% 1766/2193 [49:22<12:15,  1.72s/it]Input ids are automatically padded from 3790 to 4096 to be a multiple of `config.attention_window`: 1024
+ 81% 1770/2193 [49:29<12:49,  1.82s/it]Input ids are automatically padded from 4709 to 5120 to be a multiple of `config.attention_window`: 1024
+ 81% 1772/2193 [49:32<12:50,  1.83s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 81% 1780/2193 [49:46<12:38,  1.84s/it]Input ids are automatically padded from 3353 to 4096 to be a multiple of `config.attention_window`: 1024
+ 81% 1781/2193 [49:48<11:56,  1.74s/it]Input ids are automatically padded from 1038 to 2048 to be a multiple of `config.attention_window`: 1024
+ 81% 1782/2193 [49:48<10:00,  1.46s/it]Input ids are automatically padded from 3350 to 4096 to be a multiple of `config.attention_window`: 1024
+ 81% 1786/2193 [49:56<11:52,  1.75s/it]Input ids are automatically padded from 4415 to 5120 to be a multiple of `config.attention_window`: 1024
+ 82% 1794/2193 [50:11<12:31,  1.88s/it]Input ids are automatically padded from 534 to 1024 to be a multiple of `config.attention_window`: 1024
+ 82% 1795/2193 [50:11<09:43,  1.47s/it]Input ids are automatically padded from 1038 to 2048 to be a multiple of `config.attention_window`: 1024
+ 82% 1797/2193 [50:14<09:31,  1.44s/it]Input ids are automatically padded from 1346 to 2048 to be a multiple of `config.attention_window`: 1024
+ 82% 1798/2193 [50:15<08:13,  1.25s/it]Input ids are automatically padded from 1284 to 2048 to be a multiple of `config.attention_window`: 1024
+ 82% 1801/2193 [50:19<09:51,  1.51s/it]Input ids are automatically padded from 4215 to 5120 to be a multiple of `config.attention_window`: 1024
+ 82% 1808/2193 [50:32<11:49,  1.84s/it]Input ids are automatically padded from 2900 to 3072 to be a multiple of `config.attention_window`: 1024
+ 83% 1811/2193 [50:37<11:08,  1.75s/it]Input ids are automatically padded from 2741 to 3072 to be a multiple of `config.attention_window`: 1024
+ 83% 1815/2193 [50:44<11:13,  1.78s/it]Input ids are automatically padded from 3403 to 4096 to be a multiple of `config.attention_window`: 1024
+ 83% 1818/2193 [50:49<11:13,  1.80s/it]Input ids are automatically padded from 5113 to 5120 to be a multiple of `config.attention_window`: 1024
+ 83% 1820/2193 [50:53<11:24,  1.84s/it]Input ids are automatically padded from 1332 to 2048 to be a multiple of `config.attention_window`: 1024
+ 83% 1827/2193 [51:05<11:18,  1.85s/it]Input ids are automatically padded from 724 to 1024 to be a multiple of `config.attention_window`: 1024
+ 83% 1828/2193 [51:06<08:45,  1.44s/it]Input ids are automatically padded from 562 to 1024 to be a multiple of `config.attention_window`: 1024
+ 83% 1830/2193 [51:08<08:14,  1.36s/it]Input ids are automatically padded from 4829 to 5120 to be a multiple of `config.attention_window`: 1024
+ 84% 1833/2193 [51:14<10:15,  1.71s/it]Input ids are automatically padded from 6 to 1024 to be a multiple of `config.attention_window`: 1024
+ 84% 1838/2193 [51:21<10:22,  1.75s/it]Input ids are automatically padded from 3920 to 4096 to be a multiple of `config.attention_window`: 1024
+ 84% 1842/2193 [51:29<10:24,  1.78s/it]Input ids are automatically padded from 3681 to 4096 to be a multiple of `config.attention_window`: 1024
+ 84% 1843/2193 [51:30<09:49,  1.68s/it]Input ids are automatically padded from 520 to 1024 to be a multiple of `config.attention_window`: 1024
+ 84% 1846/2193 [51:34<09:22,  1.62s/it]Input ids are automatically padded from 3472 to 4096 to be a multiple of `config.attention_window`: 1024
+ 84% 1850/2193 [51:41<10:07,  1.77s/it]Input ids are automatically padded from 3881 to 4096 to be a multiple of `config.attention_window`: 1024
+ 85% 1858/2193 [51:56<10:20,  1.85s/it]Input ids are automatically padded from 3007 to 3072 to be a multiple of `config.attention_window`: 1024
+ 85% 1860/2193 [51:59<09:32,  1.72s/it]Input ids are automatically padded from 695 to 1024 to be a multiple of `config.attention_window`: 1024
+ 85% 1863/2193 [52:03<08:46,  1.60s/it]Input ids are automatically padded from 1180 to 2048 to be a multiple of `config.attention_window`: 1024
+ 85% 1865/2193 [52:06<08:17,  1.52s/it]Input ids are automatically padded from 2625 to 3072 to be a multiple of `config.attention_window`: 1024
+ 85% 1866/2193 [52:07<07:38,  1.40s/it]Input ids are automatically padded from 746 to 1024 to be a multiple of `config.attention_window`: 1024
+ 85% 1869/2193 [52:11<08:07,  1.50s/it]Input ids are automatically padded from 673 to 1024 to be a multiple of `config.attention_window`: 1024
+ 85% 1870/2193 [52:12<06:27,  1.20s/it]Input ids are automatically padded from 1757 to 2048 to be a multiple of `config.attention_window`: 1024
+ 85% 1872/2193 [52:14<07:03,  1.32s/it]Input ids are automatically padded from 3767 to 4096 to be a multiple of `config.attention_window`: 1024
+ 86% 1876/2193 [52:21<08:57,  1.70s/it]Input ids are automatically padded from 4550 to 5120 to be a multiple of `config.attention_window`: 1024
+ 86% 1878/2193 [52:25<09:23,  1.79s/it]Input ids are automatically padded from 2099 to 3072 to be a multiple of `config.attention_window`: 1024
+ 86% 1880/2193 [52:28<08:42,  1.67s/it]Input ids are automatically padded from 940 to 1024 to be a multiple of `config.attention_window`: 1024
+ 86% 1882/2193 [52:31<07:42,  1.49s/it]Input ids are automatically padded from 2922 to 3072 to be a multiple of `config.attention_window`: 1024
+ 86% 1883/2193 [52:32<07:09,  1.39s/it]Input ids are automatically padded from 4388 to 5120 to be a multiple of `config.attention_window`: 1024
+ 86% 1886/2193 [52:37<08:38,  1.69s/it]Input ids are automatically padded from 4438 to 5120 to be a multiple of `config.attention_window`: 1024
+ 86% 1887/2193 [52:39<08:53,  1.74s/it]Input ids are automatically padded from 1634 to 2048 to be a multiple of `config.attention_window`: 1024
+ 86% 1889/2193 [52:42<08:06,  1.60s/it]Input ids are automatically padded from 4783 to 5120 to be a multiple of `config.attention_window`: 1024
+ 86% 1892/2193 [52:47<08:58,  1.79s/it]Input ids are automatically padded from 5001 to 5120 to be a multiple of `config.attention_window`: 1024
+ 86% 1895/2193 [52:53<09:09,  1.85s/it]Input ids are automatically padded from 2701 to 3072 to be a multiple of `config.attention_window`: 1024
+ 87% 1902/2193 [53:06<09:01,  1.86s/it]Input ids are automatically padded from 4337 to 5120 to be a multiple of `config.attention_window`: 1024
+ 87% 1904/2193 [53:09<08:59,  1.87s/it]Input ids are automatically padded from 1512 to 2048 to be a multiple of `config.attention_window`: 1024
+ 87% 1907/2193 [53:14<08:08,  1.71s/it]Input ids are automatically padded from 1900 to 2048 to be a multiple of `config.attention_window`: 1024
+ 87% 1908/2193 [53:15<06:51,  1.44s/it]Input ids are automatically padded from 3549 to 4096 to be a multiple of `config.attention_window`: 1024
+ 87% 1913/2193 [53:24<08:19,  1.78s/it]Input ids are automatically padded from 366 to 1024 to be a multiple of `config.attention_window`: 1024
+ 87% 1915/2193 [53:26<07:09,  1.55s/it]Input ids are automatically padded from 1077 to 2048 to be a multiple of `config.attention_window`: 1024
+ 88% 1922/2193 [53:38<08:09,  1.80s/it]Input ids are automatically padded from 1152 to 2048 to be a multiple of `config.attention_window`: 1024
+ 88% 1923/2193 [53:39<06:48,  1.51s/it]Input ids are automatically padded from 1260 to 2048 to be a multiple of `config.attention_window`: 1024
+ 88% 1924/2193 [53:40<05:46,  1.29s/it]Input ids are automatically padded from 2373 to 3072 to be a multiple of `config.attention_window`: 1024
+ 88% 1925/2193 [53:41<05:30,  1.23s/it]Input ids are automatically padded from 1889 to 2048 to be a multiple of `config.attention_window`: 1024
+ 88% 1940/2193 [54:08<07:57,  1.89s/it]Input ids are automatically padded from 1861 to 2048 to be a multiple of `config.attention_window`: 1024
+ 89% 1942/2193 [54:11<06:58,  1.67s/it]Input ids are automatically padded from 3744 to 4096 to be a multiple of `config.attention_window`: 1024
+ 89% 1944/2193 [54:14<07:05,  1.71s/it]Input ids are automatically padded from 4883 to 5120 to be a multiple of `config.attention_window`: 1024
+ 89% 1956/2193 [54:37<07:26,  1.88s/it]Input ids are automatically padded from 2625 to 3072 to be a multiple of `config.attention_window`: 1024
+ 89% 1960/2193 [54:44<07:01,  1.81s/it]Input ids are automatically padded from 450 to 1024 to be a multiple of `config.attention_window`: 1024
+ 90% 1963/2193 [54:48<06:19,  1.65s/it]Input ids are automatically padded from 684 to 1024 to be a multiple of `config.attention_window`: 1024
+ 90% 1964/2193 [54:48<04:58,  1.30s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 90% 1965/2193 [54:49<03:59,  1.05s/it]Input ids are automatically padded from 2498 to 3072 to be a multiple of `config.attention_window`: 1024
+ 90% 1966/2193 [54:50<04:07,  1.09s/it]Input ids are automatically padded from 4810 to 5120 to be a multiple of `config.attention_window`: 1024
+ 90% 1967/2193 [54:52<04:57,  1.32s/it]Input ids are automatically padded from 662 to 1024 to be a multiple of `config.attention_window`: 1024
+ 90% 1968/2193 [54:52<03:58,  1.06s/it]Input ids are automatically padded from 4835 to 5120 to be a multiple of `config.attention_window`: 1024
+ 90% 1973/2193 [55:02<06:22,  1.74s/it]Input ids are automatically padded from 4677 to 5120 to be a multiple of `config.attention_window`: 1024
+ 90% 1975/2193 [55:05<06:35,  1.81s/it]Input ids are automatically padded from 398 to 1024 to be a multiple of `config.attention_window`: 1024
+ 90% 1977/2193 [55:08<05:36,  1.56s/it]Input ids are automatically padded from 3431 to 4096 to be a multiple of `config.attention_window`: 1024
+ 90% 1982/2193 [55:17<06:24,  1.82s/it]Input ids are automatically padded from 4918 to 5120 to be a multiple of `config.attention_window`: 1024
+ 90% 1984/2193 [55:21<06:30,  1.87s/it]Input ids are automatically padded from 611 to 1024 to be a multiple of `config.attention_window`: 1024
+ 91% 1987/2193 [55:25<05:44,  1.67s/it]Input ids are automatically padded from 2565 to 3072 to be a multiple of `config.attention_window`: 1024
+ 91% 1989/2193 [55:28<05:25,  1.60s/it]Input ids are automatically padded from 3563 to 4096 to be a multiple of `config.attention_window`: 1024
+ 91% 1990/2193 [55:29<05:17,  1.56s/it]Input ids are automatically padded from 3201 to 4096 to be a multiple of `config.attention_window`: 1024
+ 91% 1992/2193 [55:33<05:30,  1.64s/it]Input ids are automatically padded from 4785 to 5120 to be a multiple of `config.attention_window`: 1024
+ 91% 1995/2193 [55:38<05:57,  1.81s/it]Input ids are automatically padded from 4135 to 5120 to be a multiple of `config.attention_window`: 1024
+{'loss': 1.1264, 'learning_rate': 4.400364797081624e-06, 'epoch': 2.74}
+ 91% 2000/2193 [55:48<06:04,  1.89s/it]Saving model checkpoint to /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/checkpoint-2000
+Configuration saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/checkpoint-2000/config.json
+Model weights saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/checkpoint-2000/pytorch_model.bin
+Input ids are automatically padded from 170 to 1024 to be a multiple of `config.attention_window`: 1024
+ 91% 2001/2193 [56:05<20:52,  6.52s/it]Input ids are automatically padded from 3466 to 4096 to be a multiple of `config.attention_window`: 1024
+ 91% 2002/2193 [56:07<15:56,  5.01s/it]Input ids are automatically padded from 5096 to 5120 to be a multiple of `config.attention_window`: 1024
+ 92% 2009/2193 [56:20<06:33,  2.14s/it]Input ids are automatically padded from 4106 to 5120 to be a multiple of `config.attention_window`: 1024
+ 92% 2011/2193 [56:24<06:02,  1.99s/it]Input ids are automatically padded from 758 to 1024 to be a multiple of `config.attention_window`: 1024
+ 92% 2013/2193 [56:26<04:54,  1.64s/it]Input ids are automatically padded from 4232 to 5120 to be a multiple of `config.attention_window`: 1024
+ 92% 2015/2193 [56:30<05:11,  1.75s/it]Input ids are automatically padded from 3221 to 4096 to be a multiple of `config.attention_window`: 1024
+ 92% 2016/2193 [56:31<04:52,  1.66s/it]Input ids are automatically padded from 3718 to 4096 to be a multiple of `config.attention_window`: 1024
+ 92% 2017/2193 [56:33<04:42,  1.61s/it]Input ids are automatically padded from 511 to 1024 to be a multiple of `config.attention_window`: 1024
+ 92% 2019/2193 [56:35<04:09,  1.43s/it]Input ids are automatically padded from 3617 to 4096 to be a multiple of `config.attention_window`: 1024
+ 92% 2020/2193 [56:36<04:12,  1.46s/it]Input ids are automatically padded from 3823 to 4096 to be a multiple of `config.attention_window`: 1024
+ 92% 2021/2193 [56:38<04:14,  1.48s/it]Input ids are automatically padded from 4229 to 5120 to be a multiple of `config.attention_window`: 1024
+ 92% 2022/2193 [56:40<04:31,  1.59s/it]Input ids are automatically padded from 4196 to 5120 to be a multiple of `config.attention_window`: 1024
+ 92% 2025/2193 [56:45<04:59,  1.78s/it]Input ids are automatically padded from 2543 to 3072 to be a multiple of `config.attention_window`: 1024
+ 92% 2027/2193 [56:48<04:38,  1.68s/it]Input ids are automatically padded from 4118 to 5120 to be a multiple of `config.attention_window`: 1024
+ 92% 2028/2193 [56:50<04:44,  1.72s/it]Input ids are automatically padded from 3144 to 4096 to be a multiple of `config.attention_window`: 1024
+ 93% 2029/2193 [56:52<04:28,  1.64s/it]Input ids are automatically padded from 3638 to 4096 to be a multiple of `config.attention_window`: 1024
+ 93% 2030/2193 [56:53<04:19,  1.59s/it]Input ids are automatically padded from 1068 to 2048 to be a multiple of `config.attention_window`: 1024
+ 93% 2031/2193 [56:54<03:39,  1.36s/it]Input ids are automatically padded from 2358 to 3072 to be a multiple of `config.attention_window`: 1024
+ 93% 2032/2193 [56:55<03:25,  1.27s/it]Input ids are automatically padded from 3500 to 4096 to be a multiple of `config.attention_window`: 1024
+ 93% 2033/2193 [56:57<03:33,  1.33s/it]Input ids are automatically padded from 4638 to 5120 to be a multiple of `config.attention_window`: 1024
+ 93% 2034/2193 [56:58<03:54,  1.48s/it]Input ids are automatically padded from 3752 to 4096 to be a multiple of `config.attention_window`: 1024
+ 93% 2035/2193 [57:00<03:55,  1.49s/it]Input ids are automatically padded from 1747 to 2048 to be a multiple of `config.attention_window`: 1024
+ 93% 2036/2193 [57:01<03:20,  1.28s/it]Input ids are automatically padded from 4846 to 5120 to be a multiple of `config.attention_window`: 1024
+ 93% 2037/2193 [57:03<03:48,  1.47s/it]Input ids are automatically padded from 3519 to 4096 to be a multiple of `config.attention_window`: 1024
+ 93% 2039/2193 [57:06<04:04,  1.59s/it]Input ids are automatically padded from 4050 to 4096 to be a multiple of `config.attention_window`: 1024
+ 93% 2041/2193 [57:09<04:13,  1.67s/it]Input ids are automatically padded from 5107 to 5120 to be a multiple of `config.attention_window`: 1024
+ 93% 2042/2193 [57:11<04:18,  1.71s/it]Input ids are automatically padded from 813 to 1024 to be a multiple of `config.attention_window`: 1024
+ 93% 2043/2193 [57:12<03:21,  1.34s/it]Input ids are automatically padded from 4806 to 5120 to be a multiple of `config.attention_window`: 1024
+ 93% 2044/2193 [57:14<03:44,  1.51s/it]Input ids are automatically padded from 912 to 1024 to be a multiple of `config.attention_window`: 1024
+ 93% 2045/2193 [57:14<02:55,  1.19s/it]Input ids are automatically padded from 415 to 1024 to be a multiple of `config.attention_window`: 1024
+ 93% 2048/2193 [57:18<03:30,  1.45s/it]Input ids are automatically padded from 3827 to 4096 to be a multiple of `config.attention_window`: 1024
+ 94% 2051/2193 [57:24<03:58,  1.68s/it]Input ids are automatically padded from 3966 to 4096 to be a multiple of `config.attention_window`: 1024
+ 94% 2057/2193 [57:34<04:10,  1.84s/it]Input ids are automatically padded from 4748 to 5120 to be a multiple of `config.attention_window`: 1024
+ 94% 2061/2193 [57:42<04:07,  1.88s/it]Input ids are automatically padded from 2270 to 3072 to be a multiple of `config.attention_window`: 1024
+ 94% 2066/2193 [57:51<03:50,  1.82s/it]Input ids are automatically padded from 2214 to 3072 to be a multiple of `config.attention_window`: 1024
+ 94% 2072/2193 [58:01<03:40,  1.82s/it]Input ids are automatically padded from 2876 to 3072 to be a multiple of `config.attention_window`: 1024
+ 95% 2073/2193 [58:02<03:14,  1.62s/it]Input ids are automatically padded from 338 to 1024 to be a multiple of `config.attention_window`: 1024
+ 95% 2075/2193 [58:05<02:53,  1.47s/it]Input ids are automatically padded from 394 to 1024 to be a multiple of `config.attention_window`: 1024
+ 95% 2083/2193 [58:18<03:20,  1.82s/it]Input ids are automatically padded from 2270 to 3072 to be a multiple of `config.attention_window`: 1024
+ 95% 2089/2193 [58:29<03:10,  1.83s/it]Input ids are automatically padded from 379 to 1024 to be a multiple of `config.attention_window`: 1024
+ 95% 2094/2193 [58:37<02:55,  1.77s/it]Input ids are automatically padded from 4123 to 5120 to be a multiple of `config.attention_window`: 1024
+ 96% 2100/2193 [58:48<02:53,  1.87s/it]Input ids are automatically padded from 4291 to 5120 to be a multiple of `config.attention_window`: 1024
+ 96% 2103/2193 [58:54<02:49,  1.88s/it]Input ids are automatically padded from 3702 to 4096 to be a multiple of `config.attention_window`: 1024
+ 96% 2104/2193 [58:55<02:37,  1.76s/it]Input ids are automatically padded from 560 to 1024 to be a multiple of `config.attention_window`: 1024
+ 96% 2108/2193 [59:01<02:26,  1.72s/it]Input ids are automatically padded from 4958 to 5120 to be a multiple of `config.attention_window`: 1024
+ 96% 2109/2193 [59:03<02:27,  1.76s/it]Input ids are automatically padded from 4690 to 5120 to be a multiple of `config.attention_window`: 1024
+ 96% 2110/2193 [59:05<02:27,  1.78s/it]Input ids are automatically padded from 467 to 1024 to be a multiple of `config.attention_window`: 1024
+ 96% 2112/2193 [59:07<02:04,  1.53s/it]Input ids are automatically padded from 4726 to 5120 to be a multiple of `config.attention_window`: 1024
+ 96% 2114/2193 [59:11<02:15,  1.72s/it]Input ids are automatically padded from 3359 to 4096 to be a multiple of `config.attention_window`: 1024
+ 96% 2115/2193 [59:13<02:08,  1.65s/it]Input ids are automatically padded from 2358 to 3072 to be a multiple of `config.attention_window`: 1024
+ 97% 2117/2193 [59:15<02:01,  1.60s/it]Input ids are automatically padded from 3050 to 3072 to be a multiple of `config.attention_window`: 1024
+ 97% 2119/2193 [59:18<01:56,  1.57s/it]Input ids are automatically padded from 478 to 1024 to be a multiple of `config.attention_window`: 1024
+ 97% 2121/2193 [59:21<01:42,  1.43s/it]Input ids are automatically padded from 3360 to 4096 to be a multiple of `config.attention_window`: 1024
+ 97% 2128/2193 [59:33<01:57,  1.81s/it]Input ids are automatically padded from 4419 to 5120 to be a multiple of `config.attention_window`: 1024
+ 97% 2130/2193 [59:37<01:56,  1.85s/it]Input ids are automatically padded from 3529 to 4096 to be a multiple of `config.attention_window`: 1024
+ 97% 2131/2193 [59:39<01:46,  1.72s/it]Input ids are automatically padded from 4671 to 5120 to be a multiple of `config.attention_window`: 1024
+ 97% 2133/2193 [59:42<01:47,  1.79s/it]Input ids are automatically padded from 3181 to 4096 to be a multiple of `config.attention_window`: 1024
+ 97% 2136/2193 [59:48<01:42,  1.80s/it]Input ids are automatically padded from 226 to 1024 to be a multiple of `config.attention_window`: 1024
+ 97% 2138/2193 [59:50<01:24,  1.53s/it]Input ids are automatically padded from 4355 to 5120 to be a multiple of `config.attention_window`: 1024
+ 98% 2139/2193 [59:52<01:27,  1.61s/it]Input ids are automatically padded from 3006 to 3072 to be a multiple of `config.attention_window`: 1024
+ 98% 2140/2193 [59:53<01:17,  1.47s/it]Input ids are automatically padded from 5072 to 5120 to be a multiple of `config.attention_window`: 1024
+ 98% 2141/2193 [59:55<01:22,  1.58s/it]Input ids are automatically padded from 3763 to 4096 to be a multiple of `config.attention_window`: 1024
+ 98% 2142/2193 [59:56<01:19,  1.56s/it]Input ids are automatically padded from 786 to 1024 to be a multiple of `config.attention_window`: 1024
+ 98% 2147/2193 [1:00:04<01:18,  1.72s/it]Input ids are automatically padded from 610 to 1024 to be a multiple of `config.attention_window`: 1024
+ 98% 2150/2193 [1:00:08<01:10,  1.63s/it]Input ids are automatically padded from 3889 to 4096 to be a multiple of `config.attention_window`: 1024
+ 98% 2152/2193 [1:00:12<01:09,  1.69s/it]Input ids are automatically padded from 2659 to 3072 to be a multiple of `config.attention_window`: 1024
+ 98% 2155/2193 [1:00:17<01:04,  1.69s/it]Input ids are automatically padded from 354 to 1024 to be a multiple of `config.attention_window`: 1024
+ 98% 2156/2193 [1:00:17<00:48,  1.31s/it]Input ids are automatically padded from 3500 to 4096 to be a multiple of `config.attention_window`: 1024
+ 99% 2161/2193 [1:00:26<00:55,  1.75s/it]Input ids are automatically padded from 4909 to 5120 to be a multiple of `config.attention_window`: 1024
+ 99% 2163/2193 [1:00:30<00:54,  1.80s/it]Input ids are automatically padded from 3872 to 4096 to be a multiple of `config.attention_window`: 1024
+ 99% 2164/2193 [1:00:31<00:49,  1.70s/it]Input ids are automatically padded from 266 to 1024 to be a multiple of `config.attention_window`: 1024
+ 99% 2168/2193 [1:00:37<00:42,  1.70s/it]Input ids are automatically padded from 4762 to 5120 to be a multiple of `config.attention_window`: 1024
+ 99% 2170/2193 [1:00:41<00:41,  1.79s/it]Input ids are automatically padded from 362 to 1024 to be a multiple of `config.attention_window`: 1024
+ 99% 2175/2193 [1:00:49<00:31,  1.77s/it]Input ids are automatically padded from 674 to 1024 to be a multiple of `config.attention_window`: 1024
+ 99% 2180/2193 [1:00:57<00:22,  1.77s/it]Input ids are automatically padded from 2980 to 3072 to be a multiple of `config.attention_window`: 1024
+100% 2185/2193 [1:01:06<00:14,  1.83s/it]Input ids are automatically padded from 3469 to 4096 to be a multiple of `config.attention_window`: 1024
+100% 2191/2193 [1:01:17<00:03,  1.86s/it]Input ids are automatically padded from 3368 to 4096 to be a multiple of `config.attention_window`: 1024
+100% 2193/2193 [1:01:20<00:00,  1.78s/it]
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+{'train_runtime': 3680.7884, 'train_samples_per_second': 0.596, 'epoch': 3.0}
+100% 2193/2193 [1:01:20<00:00,  1.68s/it]
+Saving model checkpoint to /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183
+Configuration saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/config.json
+Model weights saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/pytorch_model.bin
+02/19/2021 11:44:54 - INFO - __main__ -   ***** Train results *****
+02/19/2021 11:44:54 - INFO - __main__ -     epoch = 3.0
+02/19/2021 11:44:54 - INFO - __main__ -     train_runtime = 3680.7884
+02/19/2021 11:44:54 - INFO - __main__ -     train_samples_per_second = 0.596
+
+
+Running Evaluation Script
+  0% 0/183 [00:00<?, ?it/s]Input ids are automatically padded from 4785 to 5120 to be a multiple of `config.attention_window`: 1024
+  1% 1/183 [00:05<16:58,  5.60s/it]Input ids are automatically padded from 3399 to 4096 to be a multiple of `config.attention_window`: 1024
+  1% 2/183 [00:13<18:35,  6.16s/it]Input ids are automatically padded from 4324 to 5120 to be a multiple of `config.attention_window`: 1024
+  4% 7/183 [00:41<16:06,  5.49s/it]Input ids are automatically padded from 3218 to 4096 to be a multiple of `config.attention_window`: 1024
+ 10% 18/183 [01:41<15:26,  5.62s/it]Input ids are automatically padded from 3575 to 4096 to be a multiple of `config.attention_window`: 1024
+ 10% 19/183 [01:45<14:31,  5.31s/it]Input ids are automatically padded from 5058 to 5120 to be a multiple of `config.attention_window`: 1024
+ 13% 23/183 [02:07<13:53,  5.21s/it]Input ids are automatically padded from 2955 to 3072 to be a multiple of `config.attention_window`: 1024
+ 13% 24/183 [02:12<13:37,  5.14s/it]Input ids are automatically padded from 2816 to 3072 to be a multiple of `config.attention_window`: 1024
+ 15% 27/183 [02:27<13:12,  5.08s/it]Input ids are automatically padded from 4361 to 5120 to be a multiple of `config.attention_window`: 1024
+ 16% 29/183 [02:38<13:17,  5.18s/it]Input ids are automatically padded from 2801 to 3072 to be a multiple of `config.attention_window`: 1024
+ 16% 30/183 [02:42<12:41,  4.98s/it]Input ids are automatically padded from 1206 to 2048 to be a multiple of `config.attention_window`: 1024
+ 17% 31/183 [02:48<13:27,  5.31s/it]Input ids are automatically padded from 2980 to 3072 to be a multiple of `config.attention_window`: 1024
+ 18% 33/183 [02:58<12:42,  5.09s/it]Input ids are automatically padded from 4747 to 5120 to be a multiple of `config.attention_window`: 1024
+ 21% 39/183 [03:31<13:20,  5.56s/it]Input ids are automatically padded from 2476 to 3072 to be a multiple of `config.attention_window`: 1024
+ 22% 40/183 [03:36<13:10,  5.52s/it]Input ids are automatically padded from 3153 to 4096 to be a multiple of `config.attention_window`: 1024
+ 22% 41/183 [03:42<12:50,  5.42s/it]Input ids are automatically padded from 3561 to 4096 to be a multiple of `config.attention_window`: 1024
+ 23% 43/183 [03:52<12:25,  5.32s/it]Input ids are automatically padded from 3486 to 4096 to be a multiple of `config.attention_window`: 1024
+ 29% 53/183 [04:46<11:16,  5.20s/it]Input ids are automatically padded from 3123 to 4096 to be a multiple of `config.attention_window`: 1024
+ 30% 55/183 [04:56<10:58,  5.14s/it]Input ids are automatically padded from 4947 to 5120 to be a multiple of `config.attention_window`: 1024
+ 32% 59/183 [05:17<10:58,  5.31s/it]Input ids are automatically padded from 4918 to 5120 to be a multiple of `config.attention_window`: 1024
+ 36% 66/183 [05:55<10:44,  5.51s/it]Input ids are automatically padded from 1012 to 1024 to be a multiple of `config.attention_window`: 1024
+ 37% 68/183 [06:06<10:43,  5.60s/it]Input ids are automatically padded from 546 to 1024 to be a multiple of `config.attention_window`: 1024
+ 40% 73/183 [06:34<09:56,  5.42s/it]Input ids are automatically padded from 4818 to 5120 to be a multiple of `config.attention_window`: 1024
+ 41% 75/183 [06:45<09:53,  5.49s/it]Input ids are automatically padded from 4127 to 5120 to be a multiple of `config.attention_window`: 1024
+ 45% 83/183 [07:29<09:09,  5.49s/it]Input ids are automatically padded from 2651 to 3072 to be a multiple of `config.attention_window`: 1024
+ 46% 84/183 [07:34<08:46,  5.32s/it]Input ids are automatically padded from 298 to 1024 to be a multiple of `config.attention_window`: 1024
+ 47% 86/183 [07:44<08:26,  5.23s/it]Input ids are automatically padded from 2641 to 3072 to be a multiple of `config.attention_window`: 1024
+ 49% 90/183 [08:07<08:51,  5.71s/it]Input ids are automatically padded from 4358 to 5120 to be a multiple of `config.attention_window`: 1024
+ 52% 96/183 [08:40<08:11,  5.65s/it]Input ids are automatically padded from 4419 to 5120 to be a multiple of `config.attention_window`: 1024
+ 54% 98/183 [08:51<07:57,  5.61s/it]Input ids are automatically padded from 3638 to 4096 to be a multiple of `config.attention_window`: 1024
+ 55% 100/183 [09:03<08:01,  5.80s/it]Input ids are automatically padded from 3529 to 4096 to be a multiple of `config.attention_window`: 1024
+ 56% 102/183 [09:13<07:18,  5.41s/it]Input ids are automatically padded from 4135 to 5120 to be a multiple of `config.attention_window`: 1024
+ 56% 103/183 [09:19<07:12,  5.41s/it]Input ids are automatically padded from 4338 to 5120 to be a multiple of `config.attention_window`: 1024
+ 57% 105/183 [09:31<07:23,  5.68s/it]Input ids are automatically padded from 4112 to 5120 to be a multiple of `config.attention_window`: 1024
+ 58% 106/183 [09:36<07:03,  5.50s/it]Input ids are automatically padded from 292 to 1024 to be a multiple of `config.attention_window`: 1024
+ 60% 109/183 [09:52<06:46,  5.50s/it]Input ids are automatically padded from 4460 to 5120 to be a multiple of `config.attention_window`: 1024
+ 61% 112/183 [10:09<06:31,  5.51s/it]Input ids are automatically padded from 3739 to 4096 to be a multiple of `config.attention_window`: 1024
+ 62% 113/183 [10:15<06:40,  5.72s/it]Input ids are automatically padded from 2096 to 3072 to be a multiple of `config.attention_window`: 1024
+ 62% 114/183 [10:19<06:10,  5.38s/it]Input ids are automatically padded from 1180 to 2048 to be a multiple of `config.attention_window`: 1024
+ 63% 115/183 [10:24<05:52,  5.18s/it]Input ids are automatically padded from 5059 to 5120 to be a multiple of `config.attention_window`: 1024
+ 63% 116/183 [10:29<05:42,  5.11s/it]Input ids are automatically padded from 3868 to 4096 to be a multiple of `config.attention_window`: 1024
+ 65% 119/183 [10:46<05:47,  5.43s/it]Input ids are automatically padded from 3408 to 4096 to be a multiple of `config.attention_window`: 1024
+ 66% 120/183 [10:52<05:37,  5.36s/it]Input ids are automatically padded from 4843 to 5120 to be a multiple of `config.attention_window`: 1024
+ 66% 121/183 [10:58<05:48,  5.62s/it]Input ids are automatically padded from 511 to 1024 to be a multiple of `config.attention_window`: 1024
+ 67% 122/183 [11:02<05:25,  5.34s/it]Input ids are automatically padded from 3050 to 3072 to be a multiple of `config.attention_window`: 1024
+ 67% 123/183 [11:07<05:09,  5.16s/it]Input ids are automatically padded from 1094 to 2048 to be a multiple of `config.attention_window`: 1024
+ 68% 125/183 [11:17<04:48,  4.98s/it]Input ids are automatically padded from 943 to 1024 to be a multiple of `config.attention_window`: 1024
+ 70% 128/183 [11:32<04:47,  5.23s/it]Input ids are automatically padded from 374 to 1024 to be a multiple of `config.attention_window`: 1024
+ 70% 129/183 [11:38<04:40,  5.19s/it]Input ids are automatically padded from 4958 to 5120 to be a multiple of `config.attention_window`: 1024
+ 74% 135/183 [12:10<04:14,  5.31s/it]Input ids are automatically padded from 730 to 1024 to be a multiple of `config.attention_window`: 1024
+ 75% 137/183 [12:21<04:06,  5.36s/it]Input ids are automatically padded from 590 to 1024 to be a multiple of `config.attention_window`: 1024
+ 75% 138/183 [12:26<03:58,  5.31s/it]Input ids are automatically padded from 2333 to 3072 to be a multiple of `config.attention_window`: 1024
+ 76% 139/183 [12:30<03:45,  5.12s/it]Input ids are automatically padded from 1968 to 2048 to be a multiple of `config.attention_window`: 1024
+ 78% 143/183 [12:52<03:33,  5.35s/it]Input ids are automatically padded from 3519 to 4096 to be a multiple of `config.attention_window`: 1024
+ 79% 144/183 [12:58<03:33,  5.48s/it]Input ids are automatically padded from 2641 to 3072 to be a multiple of `config.attention_window`: 1024
+ 80% 146/183 [13:09<03:20,  5.41s/it]Input ids are automatically padded from 534 to 1024 to be a multiple of `config.attention_window`: 1024
+ 81% 148/183 [13:21<03:20,  5.74s/it]Input ids are automatically padded from 324 to 1024 to be a multiple of `config.attention_window`: 1024
+ 83% 151/183 [13:37<02:59,  5.62s/it]Input ids are automatically padded from 4140 to 5120 to be a multiple of `config.attention_window`: 1024
+ 84% 154/183 [13:54<02:47,  5.77s/it]Input ids are automatically padded from 901 to 1024 to be a multiple of `config.attention_window`: 1024
+ 85% 156/183 [14:05<02:26,  5.44s/it]Input ids are automatically padded from 2185 to 3072 to be a multiple of `config.attention_window`: 1024
+ 86% 158/183 [14:14<02:09,  5.19s/it]Input ids are automatically padded from 582 to 1024 to be a multiple of `config.attention_window`: 1024
+ 90% 165/183 [14:53<01:39,  5.53s/it]Input ids are automatically padded from 4127 to 5120 to be a multiple of `config.attention_window`: 1024
+ 91% 166/183 [14:58<01:32,  5.43s/it]Input ids are automatically padded from 478 to 1024 to be a multiple of `config.attention_window`: 1024
+ 92% 169/183 [15:14<01:15,  5.42s/it]Input ids are automatically padded from 3767 to 4096 to be a multiple of `config.attention_window`: 1024
+ 94% 172/183 [15:31<01:01,  5.58s/it]Input ids are automatically padded from 1981 to 2048 to be a multiple of `config.attention_window`: 1024
+ 95% 173/183 [15:37<00:55,  5.55s/it]Input ids are automatically padded from 4313 to 5120 to be a multiple of `config.attention_window`: 1024
+ 96% 175/183 [15:47<00:43,  5.45s/it]Input ids are automatically padded from 3486 to 4096 to be a multiple of `config.attention_window`: 1024
+ 97% 177/183 [15:59<00:33,  5.62s/it]Input ids are automatically padded from 5083 to 5120 to be a multiple of `config.attention_window`: 1024
+ 98% 180/183 [16:17<00:17,  5.69s/it]Input ids are automatically padded from 3354 to 4096 to be a multiple of `config.attention_window`: 1024
+ 99% 182/183 [16:28<00:05,  5.66s/it]Input ids are automatically padded from 5109 to 5120 to be a multiple of `config.attention_window`: 1024
+100% 183/183 [16:34<00:00,  5.43s/it]
+Evaluation Completed
+Evaluation results saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/183-test_results.csv
+Evaluation scores saved in /content/drive/MyDrive/longformers/models/legal-led-base-16384_max_st_6144_550_summ_350_500_split_731_183/evaluation_scores.txt
